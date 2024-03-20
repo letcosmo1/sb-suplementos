@@ -1,0 +1,36 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/*********************
+ * CSS RESET *
+ *********************/
+
+* {
+	margin: 0;
+	padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/************
+ * MAIN CSS *
+ ************/
+
+:root{
+    --white: #FFFFFF;
+    --black: #000000;
+    --dark-blue: #222831;
+    --blue: #255684;
+    --light-blue: #67C6E3;
+    --gray: #8D8D8D;
+    --light-gray: #D9D9D9;
+    --green: #25844B;
+}
+input:focus {
+    outline: none;
+}
