@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom'
 const ProdutoPaginaInicial = () => {
 
     return (
-        <Link to={"/"} className="produto-card">
-            <div className="produto-img-container">
-                <img src={whey} />
-            </div>
-            
-            <h3>Creatina 100g Creapture - Growth Supplements</h3>
-
-            <p>R$999,99</p>
-        </Link>
+        <article className="produto-card">
+            <Link to={"/"}>
+                <div className="produto-img-container">
+                    <img src={whey} />
+                </div>
+                <h3>Creatina 100g Creapture - Growth Supplements</h3>
+                <p>R$999,99</p>
+            </Link>
+        </article> 
     )
   }
   
-  export default ProdutoPaginaInicial
+  export default ProdutoPaginaInicial 

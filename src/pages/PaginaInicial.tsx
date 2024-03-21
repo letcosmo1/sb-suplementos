@@ -37,13 +37,57 @@ const PaginaInicial = () => {
             <CategoriaCard />
           </Carousel>
         </div>
+      
+        <section className="produtos-destaque-container">
+          <div>
+            <h2>WHEY</h2>
+            <div className="produtos-destaque">
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <DestaquePaginaInicial />
+            </div>
+          </div>
+        </section>
 
-        <section className="produtos-principais">
-          <ProdutoPaginaInicial />
-          <ProdutoPaginaInicial />
-          <ProdutoPaginaInicial />
-          <ProdutoPaginaInicial />
-          <DestaquePaginaInicial />
+        <section className="produtos-destaque-container">
+          <div>
+            <h2>WHEY</h2>
+            <div className="produtos-destaque">
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <DestaquePaginaInicial />
+            </div>
+          </div>
+        </section>
+
+        <section className="produtos-destaque-container">
+          <div>
+            <h2>WHEY</h2>
+            <div className="produtos-destaque">
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <DestaquePaginaInicial />
+            </div>
+          </div>
+        </section>
+
+        <section className="produtos-destaque-container">
+          <div>
+            <h2>WHEY</h2>
+            <div className="produtos-destaque">
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <DestaquePaginaInicial />
+            </div>
+          </div>
         </section>
       </main>
     )

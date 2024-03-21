@@ -2,12 +2,13 @@ import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 const Header = () => {
 
     return (
       <header>
-        <Link to={"/"}><h1>SB<span>SUPLEMENTOS</span></h1></Link>
+        <Link to={"/"} className="header-logo"><Logo /></Link>
         
         <form>
             <input type="text" placeholder="Pesquisar"/>

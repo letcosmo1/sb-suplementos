@@ -6,6 +6,9 @@
     border-radius: 8px;
     color: var(--black);
 }
+.produto-card a:visited {
+    color: var(--black);
+}
 .produto-img-container {
     display: flex;
     justify-content: center;
