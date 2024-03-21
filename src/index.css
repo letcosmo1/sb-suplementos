@@ -29,6 +29,7 @@
     --light-blue: #67C6E3;
     --gray: #8D8D8D;
     --light-gray: #D9D9D9;
+    --lighter-gray: #f0f0f0;
     --green: #25844B;
 }
 input:focus {

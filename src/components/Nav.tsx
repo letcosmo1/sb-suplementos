@@ -6,11 +6,11 @@ const Nav = () => {
     return (
         <nav>
             <ul>
-                <li><Link to="/">Todos os produtos</Link></li>
-                <li><Link to="/">Whey</Link></li>
-                <li><Link to="/">Creatina</Link></li>
-                <li><Link to="/">Pré-treino</Link></li>
-                <li><Link to="/">Hipercalórico</Link></li>
+                <li><Link to={"/"}>Todos os produtos</Link></li>
+                <li><Link to={"/"}>Whey</Link></li>
+                <li><Link to={"/"}>Creatina</Link></li>
+                <li><Link to={"/"}>Pré-treino</Link></li>
+                <li><Link to={"/"}>Hipercalórico</Link></li>
             </ul>
         </nav>
     )

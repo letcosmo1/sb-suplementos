@@ -7,7 +7,6 @@ import Nav from './components/Nav'
 const App = () => {
 
   return (
-    <div>
       <BrowserRouter>
         <Header />
         <Nav />
@@ -15,7 +14,6 @@ const App = () => {
           <Route path="/" element={<PaginaInicial />} />
         </Routes>
       </BrowserRouter>
-    </div>
   )
 }
 

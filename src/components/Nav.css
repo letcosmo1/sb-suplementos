@@ -11,6 +11,6 @@ nav ul {
     width: 500px;
     height: 100%; 
 }
-a {
+nav a {
     color: var(--white);
 }

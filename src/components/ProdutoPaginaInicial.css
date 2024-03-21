@@ -1,0 +1,25 @@
+.produto-card {
+    width: calc(200px - 32px);
+    padding: 16px;
+    margin-right: 32px;
+    border: 1px solid var(--lighter-gray);
+    border-radius: 8px;
+    color: var(--black);
+}
+.produto-img-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.produto-img-container img {
+    width: 60%;
+}
+.produto-card h3 {
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+.produto-card p {
+    font-size: 32px;
+    font-weight: 400;
+}

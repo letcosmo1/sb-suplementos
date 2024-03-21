@@ -7,7 +7,7 @@ const Header = () => {
 
     return (
       <header>
-        <Link to="/"><h1>SB<span>SUPLEMENTOS</span></h1></Link>
+        <Link to={"/"}><h1>SB<span>SUPLEMENTOS</span></h1></Link>
         
         <form>
             <input type="text" placeholder="Pesquisar"/>
