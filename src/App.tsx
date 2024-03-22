@@ -4,6 +4,7 @@ import PaginaInicial from './pages/PaginaInicial'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import PaginaProdutos from './pages/PaginaProdutos'
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<PaginaInicial />} />
+          <Route path="/produtos" element={<PaginaProdutos />} />
         </Routes>
         <Footer />
       </BrowserRouter>

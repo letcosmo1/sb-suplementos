@@ -2,7 +2,7 @@ import CategoriaCard from '../components/CategoriaCard'
 import './PaginaInicial.css'
 import 'react-multi-carousel/lib/styles.css'
 import Carousel from 'react-multi-carousel'
-import ProdutoPaginaInicial from '../components/ProdutoPaginaInicial'
+import ProdutoPaginaInicial from '../components/ProdutoCard'
 import DestaquePaginaInicial from '../components/DestaquePaginaInicial'
 
 const PaginaInicial = () => {

@@ -1,8 +1,8 @@
-import './ProdutoPaginaInicial.css'
+import './ProdutoCard.css'
 import whey from '../assets/whey.png';
 import { Link } from 'react-router-dom'
 
-const ProdutoPaginaInicial = () => {
+const ProdutoCard = () => {
 
     return (
         <article className="produto-card">
@@ -17,4 +17,4 @@ const ProdutoPaginaInicial = () => {
     )
   }
   
-  export default ProdutoPaginaInicial 
+  export default ProdutoCard
