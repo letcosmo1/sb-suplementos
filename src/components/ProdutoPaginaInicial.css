@@ -1,7 +1,6 @@
 .produto-card {
     width: calc(200px - 32px);
     padding: 16px;
-    margin-right: 32px;
     border: 1px solid var(--lighter-gray);
     border-radius: 8px;
     color: var(--black);

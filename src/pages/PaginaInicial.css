@@ -26,4 +26,5 @@
 }
 .produtos-destaque {
     display: flex;
+    gap: 32px;
 }
