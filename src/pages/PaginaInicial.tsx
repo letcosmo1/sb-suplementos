@@ -55,15 +55,15 @@ const PaginaInicial = () => {
           <div>
             <h2>WHEY</h2>
             <div className="produtos-destaque">
-              <ProdutoPaginaInicial />
-              <ProdutoPaginaInicial />
-              <ProdutoPaginaInicial />
-              <ProdutoPaginaInicial />
               <DestaquePaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
             </div>
           </div>
         </section>
-
+        
         <section className="produtos-destaque-container">
           <div>
             <h2>WHEY</h2>
@@ -81,11 +81,11 @@ const PaginaInicial = () => {
           <div>
             <h2>WHEY</h2>
             <div className="produtos-destaque">
-              <ProdutoPaginaInicial />
-              <ProdutoPaginaInicial />
-              <ProdutoPaginaInicial />
-              <ProdutoPaginaInicial />
               <DestaquePaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
+              <ProdutoPaginaInicial />
             </div>
           </div>
         </section>
