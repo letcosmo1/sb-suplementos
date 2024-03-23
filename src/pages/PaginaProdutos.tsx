@@ -6,7 +6,7 @@ const PaginaProdutos = () => {
 
     return (
         <main className="pagina-produtos">
-            <nav className="breadcrumbs">
+            <nav className="produtos-breadcrumbs">
                 <Link to={"/"}>Página Inicial</Link>
                 &gt;
                 <Link to={"/produtos"}>Produtos</Link>

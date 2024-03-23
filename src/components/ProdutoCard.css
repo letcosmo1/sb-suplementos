@@ -5,6 +5,9 @@
     border-radius: 8px;
     color: var(--black);
 }
+.produto-card a {
+    color: var(--black);
+}
 .produto-card a:visited {
     color: var(--black);
 }

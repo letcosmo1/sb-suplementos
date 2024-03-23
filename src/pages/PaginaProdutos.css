@@ -1,14 +1,14 @@
 .pagina-produtos {
     margin: 0 32px;
 }
-.breadcrumbs {
+.produtos-breadcrumbs {
     display: flex;
     gap: 8px;
     margin-top: 16px;
     font-weight: 400;
     color: var(--gray);
 }
-.breadcrumbs a {
+.produtos-breadcrumbs a {
     color: var(--gray);
     font-weight: 400;
 }

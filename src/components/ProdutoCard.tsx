@@ -6,7 +6,7 @@ const ProdutoCard = () => {
 
     return (
         <article className="produto-card">
-            <Link to={"/"}>
+            <Link to={"/produto"}>
                 <div className="produto-img-container">
                     <img src={whey} />
                 </div>
