@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "baseUrl": "",
+    "paths": {
+      "@routes/*": ["./src/infrastructure/web/routes/*"],
+      "@mongoose/*": ["./src/infrastructure/database/*"],
+      "@repositories/*": ["./src/domain/repositories/*"],
+      "@controllers/*": ["./src/application/controllers/*"],
+      "@usecases/*": ["./src/application/usecases/*"],
+      "@services/*": ["./src/domain/services/*"],
+      "@models/*": ["./src/domain/models/*"],
+      "@type/*": ["./src/domain/types/*"],
+      "@interfaces/*": ["./src/domain/entities/interfaces/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
