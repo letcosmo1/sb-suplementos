@@ -13,18 +13,3 @@
 .carousel {
     width: 1099px;
 }
-.produtos-destaque-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 32px;
-}
-.produtos-destaque-container h2 {
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 8px;
-}
-.produtos-destaque {
-    display: flex;
-    gap: 32px;
-}

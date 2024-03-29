@@ -1,6 +1,6 @@
 import './PaginaDetalhes.css'
-import whey from '../assets/whey.png';
-import tbl_nutricional from '../assets/tbl-nutricional.png'
+import whey from '../assets/images/whey.png';
+import tbl_nutricional from '../assets/images/tbl-nutricional.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';

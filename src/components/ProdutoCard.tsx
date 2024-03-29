@@ -1,17 +1,22 @@
 import './ProdutoCard.css'
-import whey from '../assets/whey.png';
 import { Link } from 'react-router-dom'
+import { TypeProduto } from '../utils/Types'
+import { getImageUrl } from '../utils/ImageUrl'
 
-const ProdutoCard = () => {
+type PropTypes = {
+    produto: TypeProduto
+}
+
+const ProdutoCard = ({ produto }:PropTypes) => {
 
     return (
         <article className="produto-card">
             <Link to={"/produto"}>
                 <div className="produto-img-container">
-                    <img src={whey} />
+                    <img src={ getImageUrl(produto.imagem) } />
                 </div>
-                <h3>Creatina 100g Creapture - Growth Supplements</h3>
-                <p>R$999,99</p>
+                <h3>{ produto.nome }</h3>
+                <p>{ produto.preco }</p>
             </Link>
         </article> 
     )
