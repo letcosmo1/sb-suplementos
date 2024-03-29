@@ -1,8 +1,92 @@
 import './PaginaProdutos.css'
 import { Link } from 'react-router-dom'
-import ProdutoPaginaInicial from '../components/ProdutoCard'
+import ProdutoCard from '../components/ProdutoCard'
+import { useState } from 'react'
+import { TypeProduto } from '../utils/Types'
 
 const PaginaProdutos = () => {
+    const [produtos] = useState<TypeProduto[]>([
+        {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          },
+          {
+            categoria: "Creatina",
+            imagem: "whey.png",
+            nome: "Creatina 100g Creapture - Growth Supplements",
+            preco: 999.99,
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+            sabor: "Chocolate",
+            peso: "900g",
+            tabela_nutricional: "tbl-nutricional.png"
+          }
+    ])
 
     return (
         <main className="pagina-produtos">
@@ -24,31 +108,10 @@ const PaginaProdutos = () => {
                         </select>
                     </div>
                     
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
-                    <ProdutoPaginaInicial />
+                    { produtos.map((produto) => {
+                        return <ProdutoCard produto={ produto }/>
+                    }) }
+                    
                 </section>
             </div>
         </main>
