@@ -16,7 +16,7 @@ const ProdutoCard = ({ produto }:PropTypes) => {
                     <img src={ getImageUrl(produto.imagem) } />
                 </div>
                 <h3>{ produto.nome }</h3>
-                <p>{ produto.preco }</p>
+                <p>R${ produto.preco }</p>
             </Link>
         </article> 
     )

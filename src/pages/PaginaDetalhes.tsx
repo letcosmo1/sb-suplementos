@@ -1,11 +1,28 @@
 import './PaginaDetalhes.css'
-import whey from '../assets/images/whey.png';
-import tbl_nutricional from '../assets/images/tbl-nutricional.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { TypeProduto } from '../utils/Types';
+import { getImageUrl } from '../utils/ImageUrl';
+import { useState } from 'react';
 
 const PaginaDetalhes = () => {
+    const produto: TypeProduto = {
+        categoria: "Creatina",
+        imagem: "whey.png",
+        nome: "Creatina 100g Creapture - Growth Supplements",
+        preco: 999.99,
+        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
+        sabor: "Chocolate",
+        peso: "900g",
+        tabela_nutricional: "tbl-nutricional.png"
+    }
+
+    const [selectedImage, setSelectedImage] = useState<string>(produto.imagem)
+
+    const toggleImage = (imagem_url: string) => {
+        setSelectedImage(imagem_url)
+    }
 
     return (
         <main className="pagina-detalhes">
@@ -14,48 +31,46 @@ const PaginaDetalhes = () => {
                 &gt;
                 <Link to={"/"}>Categoria</Link>
                 &gt;
-                <Link to={"/produto"}>Super Whey 900g Max Titanium Chocolate</Link>
+                <Link to={"/produto"}>{ produto.nome }</Link>
             </nav>
 
             <div className="detalhes-container">
                 <section className="produto-imagens">
                     <div className="img-nav">
-                        <div><img src={whey} /></div>
-                        <div><img src={tbl_nutricional} /></div>
+                        <div onClick={ () => toggleImage(produto.imagem) }>
+                            <img src={ getImageUrl(produto.imagem) } />
+                        </div>
+                        <div onClick={ () => toggleImage(produto.tabela_nutricional) }>
+                            <img src={ getImageUrl(produto.tabela_nutricional) } />
+                        </div>
                     </div>
                     <div className="img-selecionada">
-                        <img src={whey} />
+                        <img src={ getImageUrl(selectedImage) } />
                     </div>
                 </section>
 
                 <section className="produto-info">
-                    <h2>Super Whey 900g - Max Titanium Chocolate</h2>
-                    <h3>Sabor</h3>
+                    <h2>{ produto.nome }</h2>
                     <div>
-                        <button>Baunilha</button>
-                        <button>Chocolate</button>
-                        <button>Morango</button>
+                        <h3>Sabor</h3>
+                        <p>{ produto.sabor }</p>
                     </div>
-                    <h3>Tamanho</h3>
                     <div>
-                        <button>900g</button>
+                        <h3>Peso</h3>
+                        <p>{ produto.peso }</p>
                     </div>
                 </section>
 
                 <section className="produto-preco">
                     <h3>Preço</h3>
-                    <p>R$61,26</p>
+                    <p>R${ produto.preco }</p>
                     <button><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
                 </section>
             </div>
 
             <section className="produto-descricao">
                 <h2>Descrição</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, 
-                    viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non 
-                    fermentum eros quam vitae ex.
-                    Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non 
-                    fermentum eros quam vitae ex.</p>
+                <p>{ produto.descricao }</p>
             </section>
         </main>
     )
