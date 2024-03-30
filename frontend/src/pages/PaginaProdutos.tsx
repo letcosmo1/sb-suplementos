@@ -1,7 +1,7 @@
 import './PaginaProdutos.css'
 import { Link } from 'react-router-dom'
 import ProdutoCard from '../components/ProdutoCard'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TypeProduto } from '../utils/Types'
 
 const PaginaProdutos = () => {
@@ -87,6 +87,12 @@ const PaginaProdutos = () => {
             tabela_nutricional: "tbl-nutricional.png"
           }
     ])
+
+    useEffect(() => {
+      fetch("http://localhost:3000")
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }, []);
 
     return (
         <main className="pagina-produtos">
