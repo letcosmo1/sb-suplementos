@@ -7,10 +7,6 @@ import Footer from "./components/Footer";
 import PaginaDetalhes from "./pages/PaginaDetalhes";
 import PaginaProdutos from "./pages/PaginaProdutos";
 
-import axios from "axios";
-
-const products = await axios.get(import.meta.env.VITE_BACKEND_URL);
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -20,7 +16,7 @@ const App = () => {
         <Route path="/" element={<PaginaInicial />} />
         <Route
           path="/produtos"
-          element={<PaginaProdutos products={products.data} />}
+          element={<PaginaProdutos />}
         />
         <Route path="/produto" element={<PaginaDetalhes />} />
       </Routes>
