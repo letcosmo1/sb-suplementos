@@ -1,31 +1,25 @@
-import "./ProdutoCard.css";
-import whey from "../assets/whey.png";
-import { Link } from "react-router-dom";
+import './ProdutoCard.css'
+import { Link } from 'react-router-dom'
+import { TypeProduto } from '../utils/Types'
+import { getImageUrl } from '../utils/ImageUrl'
 
-const ProdutoCard = ({ product }: { product: any[] | undefined }) => {
-  return (
-    <article className="produto-card">
-      {product ? (
-        product.map((prod: any) => (
-          <Link key={prod.id} to={`/produto/${prod.id}`}>
-            <div className="produto-img-container">
-              <img src={whey} alt={prod.productName} />
-            </div>
-            <h3>{prod.productName}</h3>
-            <p>R$ {prod.productPrice}</p>
-          </Link>
-        ))
-      ) : (
-        <Link to={"/produto"}>
-          <div className="produto-img-container">
-            <img src={whey} alt="Nome Teste" />
-          </div>
-          <h3>{"Whey Proten"}</h3>
-          <p>R$ {"55,00"}</p>
-        </Link>
-      )}
-    </article>
-  );
-};
+type PropTypes = {
+    produto: TypeProduto
+}
 
-export default ProdutoCard;
+const ProdutoCard = ({ produto }:PropTypes) => {
+
+    return (
+        <article className="produto-card">
+            <Link to={"/produto"}>
+                <div className="produto-img-container">
+                    <img src={ getImageUrl(produto.imagem) } />
+                </div>
+                <h3>{ produto.nome }</h3>
+                <p>R${ produto.preco }</p>
+            </Link>
+        </article> 
+    )
+  }
+  
+  export default ProdutoCard

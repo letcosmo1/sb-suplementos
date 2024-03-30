@@ -29,6 +29,7 @@
     width: 20%;
 }
 .img-nav div {
+    cursor: pointer;
     padding: 6px 8px;
     border: 1px solid var(--lighter-gray);
     border-radius: 2px;
@@ -54,23 +55,23 @@
     font-size: 32px;
     font-weight: 400;
 }
+.produto-info div {
+    width: 50%;
+}
 .produto-info h3 {
     margin-top: 16px;
     font-size: 14px;
     font-weight: 400;
 }
-.produto-info div {
-    display: flex;
-    gap: 8px;
-}
-.produto-info button {
-    width: 33%;
+.produto-info p {
     height: 50px;
     font-weight: 400;
     background-color: var(--white);
     margin-top: 8px;
     border: 1px solid var(--lighter-gray);
     border-radius: 6px;
+    text-align: center;
+    line-height: 50px;
 }
 .produto-preco {
     width: calc(30% - 64px);
