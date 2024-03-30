@@ -7,7 +7,7 @@ const ProductSchema: Schema = new Schema({
   productPrice: { type: Number, required: true },
   productDescription: { type: String, required: true },
   productFlavor: { type: String, required: true },
-  productWeight: { type: Number, required: true },
+  productWeight: { type: String, required: true },
   productCategory: { type: String, required: true },
   nutritionalTable: { type: String, required: true },
 });
