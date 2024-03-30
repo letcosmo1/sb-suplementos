@@ -27,68 +27,68 @@ export class ProductsRepository {
 
   async getProductByNameAsc(): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({}).sort({
-      productName: 1,
+      name: 1,
     });
     return products;
   }
 
   async getProductByNameDesc(): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({}).sort({
-      productName: -1,
+      name: -1,
     });
     return products;
   }
 
   async getProductByPriceAsc(): Promise<IProduct[]> {
-    const products: IProduct[] = await ProductModel.find({}).sort({ productPrice: 1 });
+    const products: IProduct[] = await ProductModel.find({}).sort({ price: 1 });
     return products;
   }
 
   async getProductByPriceDesc(): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({}).sort({
-      productPrice: -1,
+      price: -1,
     });
     return products;
   }
 
   async getProductByCategory(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
-      productCategory: category,
+      category: category,
     });
     return products;
   }
 
   async getProductByCategoryAsc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
-      productCategory: category,
+      category: category,
     }).sort({ titulo: 1 });
     return products;
   }
 
   async getProductByCategoryDesc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
-      productCategory: category,
+      category: category,
     }).sort({ titulo: -1 });
     return products;
   }
 
   async getProductByCategoryPrice(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
-      productCategory: category,
+      category: category,
     });
     return products;
   }
 
   async getProductByCategoryPriceAsc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
-      productCategory: category,
+      category: category,
     }).sort({ productPrice: 1 });
     return products;
   }
 
   async getProductByCategoryPriceDesc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
-      productCategory: category,
+      category: category,
     }).sort({ productPrice: -1 });
     return products;
   }

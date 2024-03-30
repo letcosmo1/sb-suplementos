@@ -1,22 +1,22 @@
 import './ProdutoCard.css'
 import { Link } from 'react-router-dom'
-import { TypeProduto } from '../utils/Types'
+import { TypeProduct } from '../utils/Types'
 import { getImageUrl } from '../utils/ImageUrl'
 
 type PropTypes = {
-    produto: TypeProduto
+    product: TypeProduct
 }
 
-const ProdutoCard = ({ produto }:PropTypes) => {
+const ProdutoCard = ({ product }:PropTypes) => {
 
     return (
         <article className="produto-card">
             <Link to={"/produto"}>
                 <div className="produto-img-container">
-                    <img src={ getImageUrl(produto.imagem) } />
+                    <img src={ getImageUrl(product.image) } />
                 </div>
-                <h3>{ produto.nome }</h3>
-                <p>R${ produto.preco }</p>
+                <h3>{ product.name }</h3>
+                <p>R${ product.price }</p>
             </Link>
         </article> 
     )

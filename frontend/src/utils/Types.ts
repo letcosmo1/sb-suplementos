@@ -1,12 +1,13 @@
-export type TypeProduto = {
-    categoria: string,
-    imagem: string,
-    nome: string,
-    preco: number,
-    descricao: string,
-    sabor: string,
-    peso: string,
-    tabela_nutricional: string
+export type TypeProduct = {
+    _id: string 
+    category: string,
+    image: string,
+    name: string,
+    price: number,
+    description: string,
+    flavor: string,
+    weight: string,
+    nutritional_table: string
 }
 export type TypeCategoriaSlider = {
     nome: string,
@@ -14,6 +15,6 @@ export type TypeCategoriaSlider = {
 }
 export type TypeCategoriaDestaque = {
     titulo: string,
-    produtos: Array<TypeProduto>,
+    produtos: Array<TypeProduct>,
     imagem: string
 }
