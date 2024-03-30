@@ -16,7 +16,9 @@ app.use(
 );
 
 import router from "@routes/products-router";
+import routerCategory from "@routes/category-router"
 app.use(router);
+app.use(routerCategory);
 
 // Json - BodyParser
 import bodyParser from "body-parser";
