@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    background-color: var(--dark-blue);
+}
+.header-logo {
+    margin-left: 32px;
+}
+header input {
+    width: calc(450px - 16px);
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: var(--white);
+    font-size: 14px;
+}
+header button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+.filler {
+    width: 90px;
+    margin-right: 32px;
+}
