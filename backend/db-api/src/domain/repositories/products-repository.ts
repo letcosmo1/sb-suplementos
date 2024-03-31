@@ -61,14 +61,14 @@ export class ProductsRepository {
   async getProductByCategoryAsc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
       category: category,
-    }).sort({ titulo: 1 });
+    }).sort({ name: 1 });
     return products;
   }
 
   async getProductByCategoryDesc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
       category: category,
-    }).sort({ titulo: -1 });
+    }).sort({ name: -1 });
     return products;
   }
 
@@ -82,14 +82,14 @@ export class ProductsRepository {
   async getProductByCategoryPriceAsc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
       category: category,
-    }).sort({ productPrice: 1 });
+    }).sort({ price: 1 });
     return products;
   }
 
   async getProductByCategoryPriceDesc(category: category): Promise<IProduct[]> {
     const products: IProduct[] = await ProductModel.find({
       category: category,
-    }).sort({ productPrice: -1 });
+    }).sort({ price: -1 });
     return products;
   }
 }

@@ -18,6 +18,10 @@ const App = () => {
           path="/produtos"
           element={<PaginaProdutos />}
         />
+        <Route
+          path="/produtos/:categoria"
+          element={<PaginaProdutos />}
+        />
         <Route path="/produto/:id" element={<PaginaDetalhes />} />
       </Routes>
       <Footer />
