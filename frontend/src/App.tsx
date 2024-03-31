@@ -14,14 +14,8 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
-        <Route
-          path="/produtos"
-          element={<PaginaProdutos />}
-        />
-        <Route
-          path="/produtos/:categoria"
-          element={<PaginaProdutos />}
-        />
+        <Route path="/produtos" element={<PaginaProdutos />}/>
+        <Route path="/produtos/:categoria" element={<PaginaProdutos />}/>
         <Route path="/produto/:id" element={<PaginaDetalhes />} />
       </Routes>
       <Footer />

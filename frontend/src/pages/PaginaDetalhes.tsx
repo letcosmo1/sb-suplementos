@@ -40,9 +40,11 @@ const PaginaDetalhes = () => {
         <main className="pagina-detalhes">
             <nav className="detalhes-breadcrumbs">
                 <Link to={"/"}>Página Inicial</Link>
-                &gt;
-                <Link to={"/"}>Categoria</Link>
-                &gt;
+                { ">" }
+                <Link to={"/produtos"}>Produtos</Link>
+                { ">" }
+                {<Link to={`/produtos/${product.category}`}>{ product.category }</Link> }
+                { ">" }
                 <Link to={"/produto"}>{ product.name }</Link>
             </nav>
 
