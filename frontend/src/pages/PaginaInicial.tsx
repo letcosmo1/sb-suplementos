@@ -5,6 +5,7 @@ import Carousel from 'react-multi-carousel'
 import { useEffect, useState } from 'react'
 import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
+import { getHighlightCategories } from '../api/DatabaseApi'
 
 const PaginaInicial = () => {
   const carousel_responsive = {
@@ -45,20 +46,11 @@ const PaginaInicial = () => {
     }
   ])
 
-  const api_url: string = "http://localhost:3000"
-
   const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>([])
 
-  const fetchHighlightCategories = (url: string) => {
-    fetch(url)
-      .then(res => res.json())
-      .then((data:TypeHighlightCategory[]) => {
-        setHighlightCategories(data.map(product => product))
-      })
-  }
-
   useEffect(() => {
-    fetchHighlightCategories(`${api_url}/categories/hl`)
+    getHighlightCategories()
+      .then(data => setHighlightCategories(data))
   }, []);
 
   return (

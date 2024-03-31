@@ -3,26 +3,19 @@ import { Link } from 'react-router-dom'
 import ProdutoCard from '../components/ProdutoCard'
 import { BaseSyntheticEvent, useEffect, useState } from 'react'
 import { TypeProduct } from '../utils/Types'
+import { getProducts } from '../api/DatabaseApi'
 
 const PaginaProdutos = () => {
-    const api_url: string = "http://localhost:3000"
     const [products, setProducts] = useState<TypeProduct[]>([])
 
     const handleOrdenacaoChange = (e: BaseSyntheticEvent) => {
-      const url = api_url + e.target.value
-      console.log(url)
-      fetchProducts(url)
-    }
-    const fetchProducts = (url: string) => {
-      fetch(url)
-        .then(res => res.json())
-        .then((data:TypeProduct[]) => {
-          setProducts(data.map(product => product))
-        })
+      getProducts(e.target.value)
+        .then(data => setProducts(data))
     }
 
     useEffect(() => {
-      fetchProducts(`${api_url}/products/asc`)
+      getProducts("asc")
+        .then(data => setProducts(data))
     }, []);
 
     return (
@@ -40,10 +33,10 @@ const PaginaProdutos = () => {
                     <div className="ordenacao-container">
                         <label htmlFor="order">Ordenação: </label>
                         <select name="order" onChange={ handleOrdenacaoChange }>
-                            <option value="/products/asc">A - Z</option>
-                            <option value="/products/desc">Z - A</option>
-                            <option value="/products/price/asc">Menor preço</option>
-                            <option value="/products/price/desc">Maior preço</option>
+                            <option value="asc">A - Z</option>
+                            <option value="desc">Z - A</option>
+                            <option value="price/asc">Menor preço</option>
+                            <option value="price/desc">Maior preço</option>
                         </select>
                     </div>
                     

@@ -5,6 +5,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { TypeProduct } from '../utils/Types';
 import { getImageUrl } from '../utils/ImageUrl';
 import { useEffect, useState } from 'react';
+import { getProductById } from '../api/DatabaseApi';
 
 const PaginaDetalhes = () => {
     const { id } = useParams()
@@ -26,20 +27,13 @@ const PaginaDetalhes = () => {
     const toggleImage = (imagem_url: string) => {
         setSelectedImage(imagem_url)
     }
-
-    const api_url: string = "http://localhost:3000"
-
-    const fetchProduct = (url: string) => {
-        fetch(url)
-          .then(res => res.json())
-          .then((data: TypeProduct) => {
-            setProduct(data)
-            setSelectedImage(data.image)
-          })
-      }
     
     useEffect(() => {
-        fetchProduct(`${api_url}/product/${id}`)
+        getProductById(id)
+            .then(data => {
+                setProduct(data)
+                setSelectedImage(data.image)
+            })
     }, []);
 
     return (
