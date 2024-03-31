@@ -1,28 +1,46 @@
 import './PaginaDetalhes.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { TypeProduto } from '../utils/Types';
+import { TypeProduct } from '../utils/Types';
 import { getImageUrl } from '../utils/ImageUrl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PaginaDetalhes = () => {
-    const produto: TypeProduto = {
-        categoria: "Creatina",
-        imagem: "whey.png",
-        nome: "Creatina 100g Creapture - Growth Supplements",
-        preco: 999.99,
-        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-        sabor: "Chocolate",
-        peso: "900g",
-        tabela_nutricional: "tbl-nutricional.png"
-    }
+    const { id } = useParams()
 
-    const [selectedImage, setSelectedImage] = useState<string>(produto.imagem)
+    const [product, setProduct] = useState<TypeProduct>({
+        _id: "", 
+        category: "",
+        image: "",
+        name: "",
+        price: 0,
+        description: "",
+        flavor: "",
+        weight: "",
+        nutritional_table: ""
+    })
+
+    const [selectedImage, setSelectedImage] = useState<string>("")
 
     const toggleImage = (imagem_url: string) => {
         setSelectedImage(imagem_url)
     }
+
+    const api_url: string = "http://localhost:3000"
+
+    const fetchProduct = (url: string) => {
+        fetch(url)
+          .then(res => res.json())
+          .then((data: TypeProduct) => {
+            setProduct(data)
+            setSelectedImage(data.image)
+          })
+      }
+    
+    useEffect(() => {
+        fetchProduct(`${api_url}/product/${id}`)
+    }, []);
 
     return (
         <main className="pagina-detalhes">
@@ -31,17 +49,17 @@ const PaginaDetalhes = () => {
                 &gt;
                 <Link to={"/"}>Categoria</Link>
                 &gt;
-                <Link to={"/produto"}>{ produto.nome }</Link>
+                <Link to={"/produto"}>{ product.name }</Link>
             </nav>
 
             <div className="detalhes-container">
                 <section className="produto-imagens">
                     <div className="img-nav">
-                        <div onClick={ () => toggleImage(produto.imagem) }>
-                            <img src={ getImageUrl(produto.imagem) } />
+                        <div onClick={ () => toggleImage(product.image) }>
+                            <img src={ getImageUrl(product.image) } />
                         </div>
-                        <div onClick={ () => toggleImage(produto.tabela_nutricional) }>
-                            <img src={ getImageUrl(produto.tabela_nutricional) } />
+                        <div onClick={ () => toggleImage(product.nutritional_table) }>
+                            <img src={ getImageUrl(product.nutritional_table) } />
                         </div>
                     </div>
                     <div className="img-selecionada">
@@ -50,27 +68,27 @@ const PaginaDetalhes = () => {
                 </section>
 
                 <section className="produto-info">
-                    <h2>{ produto.nome }</h2>
+                    <h2>{ product.name }</h2>
                     <div>
                         <h3>Sabor</h3>
-                        <p>{ produto.sabor }</p>
+                        <p>{ product.flavor }</p>
                     </div>
                     <div>
                         <h3>Peso</h3>
-                        <p>{ produto.peso }</p>
+                        <p>{ product.weight }</p>
                     </div>
                 </section>
 
                 <section className="produto-preco">
                     <h3>Preço</h3>
-                    <p>R${ produto.preco }</p>
+                    <p>R${ product.price }</p>
                     <button><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
                 </section>
             </div>
 
             <section className="produto-descricao">
                 <h2>Descrição</h2>
-                <p>{ produto.descricao }</p>
+                <p>{ product.description }</p>
             </section>
         </main>
     )

@@ -11,7 +11,7 @@ const ProdutoCard = ({ product }:PropTypes) => {
 
     return (
         <article className="produto-card">
-            <Link to={"/produto"}>
+            <Link to={"/produto/" + product._id}>
                 <div className="produto-img-container">
                     <img src={ getImageUrl(product.image) } />
                 </div>
