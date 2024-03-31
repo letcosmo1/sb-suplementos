@@ -8,7 +8,7 @@ const CategoryHLSchema: Schema = new Schema({
 });
 
 const CategoryHLModel = mongoose.model<ICategoryHL>(
-  "highlightcategories",
+  "highlight_categories",
   CategoryHLSchema
 );
 

@@ -47,16 +47,18 @@ const PaginaInicial = () => {
 
   const api_url: string = "http://localhost:3000"
 
-  const [highlightCategories] = useState<TypeHighlightCategory[]>([])
+  const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>([])
 
-  const fetchProducts = (url: string) => {
+  const fetchHighlightCategories = (url: string) => {
     fetch(url)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then((data:TypeHighlightCategory[]) => {
+        setHighlightCategories(data.map(product => product))
+      })
   }
 
   useEffect(() => {
-    fetchProducts(`${api_url}/products/asc`)
+    fetchHighlightCategories(`${api_url}/categories/hl`)
   }, []);
 
   return (
@@ -75,7 +77,7 @@ const PaginaInicial = () => {
 
         { highlightCategories.map((highlight_category, index) => {
           const direcao: string = index % 2 === 0 ? "direita" : "esquerda"
-          return <CategoriaDestaque highlight_category={ highlight_category } highlight_position={ direcao }/>
+          return <CategoriaDestaque key={ highlight_category._id } highlight_category={ highlight_category } highlight_position={ direcao }/>
         }) }
         
       </main>

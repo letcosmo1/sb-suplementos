@@ -20,7 +20,7 @@ const CategoriaDestaque = ({ highlight_category, highlight_position }:PropTypes)
               
 
               { highlight_category.products.map((product) => {
-                  return <ProdutoCard product={ product }/>
+                  return <ProdutoCard key={ product._id } product={ product }/>
               }) }
                 
               { highlight_position === "direita" && <DestaqueCard imagem={ highlight_category.highlight_image } />}
