@@ -9,12 +9,12 @@ export type TypeProduct = {
     weight: string,
     nutritional_table: string
 }
-export type TypeCategoriaSlider = {
-    nome: string,
-    icone: string
+export type TypeCategorySlider = {
+    name: string,
+    icon: string
 }
-export type TypeCategoriaDestaque = {
-    titulo: string,
-    produtos: Array<TypeProduct>,
-    imagem: string
+export type TypeHighlightCategory = {
+    title: string,
+    products: Array<TypeProduct>,
+    highlight_image: string
 }

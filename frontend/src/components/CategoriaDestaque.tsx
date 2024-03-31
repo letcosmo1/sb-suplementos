@@ -1,29 +1,29 @@
 import './CategoriaDestaque.css'
 import DestaqueCard from './DestaqueCard'
 import ProdutoCard from './ProdutoCard'
-import { TypeCategoriaDestaque } from '../utils/Types'
+import { TypeHighlightCategory } from '../utils/Types'
 
 type PropTypes = {
-    categoria_destaque: TypeCategoriaDestaque,
-    posicao_destaque: string
+    highlight_category: TypeHighlightCategory,
+    highlight_position: string
 }
 
-const CategoriaDestaque = ({ categoria_destaque, posicao_destaque }:PropTypes) => {
+const CategoriaDestaque = ({ highlight_category, highlight_position }:PropTypes) => {
 
     return (
         <section className="produtos-destaque-container">
           <div>
-            <h2>{ categoria_destaque.titulo }</h2>
+            <h2>{ highlight_category.title }</h2>
             
             <div className="produtos-destaque">
-              { posicao_destaque === "esquerda" && <DestaqueCard imagem={ categoria_destaque.imagem } />}
+              { highlight_position === "esquerda" && <DestaqueCard imagem={ highlight_category.highlight_image } />}
               
 
-              { categoria_destaque.produtos.map((produto) => {
-                  return <ProdutoCard produto={ produto }/>
+              { highlight_category.products.map((product) => {
+                  return <ProdutoCard product={ product }/>
               }) }
                 
-              { posicao_destaque === "direita" && <DestaqueCard imagem={ categoria_destaque.imagem } />}
+              { highlight_position === "direita" && <DestaqueCard imagem={ highlight_category.highlight_image } />}
             </div>
           </div>
         </section>

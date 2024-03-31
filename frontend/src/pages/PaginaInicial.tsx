@@ -2,235 +2,62 @@ import CategoriaCard from '../components/CategoriaCard'
 import './PaginaInicial.css'
 import 'react-multi-carousel/lib/styles.css'
 import Carousel from 'react-multi-carousel'
-import { useState } from 'react'
-import { TypeCategoriaDestaque, TypeCategoriaSlider } from '../utils/Types'
+import { useEffect, useState } from 'react'
+import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
 
 const PaginaInicial = () => {
-    const carousel_responsive = {
-      desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 7
-      }
+  const carousel_responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 7
     }
+  }
 
-    const [categoriasSlider] = useState<TypeCategoriaSlider[]>([
-      {
-        nome: "Creatina",
-        icone: "creatina.png"
-      },
-      {
-        nome: "Whey",
-        icone: "creatina.png"
-      },
-      {
-        nome: "Pré-treino",
-        icone: "creatina.png"
-      },
-      {
-        nome: "Barra de proteína",
-        icone: "creatina.png"
-      },
-      {
-        nome: "Caneleira",
-        icone: "creatina.png"
-      },
-      {
-        nome: "Hipercalórico",
-        icone: "creatina.png"
-      },
-      {
-        nome: "Ômega 3",
-        icone: "creatina.png"
-      }
-    ])
+  const [categoriesSlider] = useState<TypeCategorySlider[]>([
+    {
+      name: "Creatina",
+      icon: "creatina.png"
+    },
+    {
+      name: "Whey",
+      icon: "creatina.png"
+    },
+    {
+      name: "Pré-treino",
+      icon: "creatina.png"
+    },
+    {
+      name: "Barra de proteína",
+      icon: "creatina.png"
+    },
+    {
+      name: "Caneleira",
+      icon: "creatina.png"
+    },
+    {
+      name: "Hipercalórico",
+      icon: "creatina.png"
+    },
+    {
+      name: "Ômega 3",
+      icon: "creatina.png"
+    }
+  ])
 
-    const [categoriaDestaque] = useState<TypeCategoriaDestaque[]>([
-      {
-        titulo: "WHEY",
-        produtos: [
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          }
-        ],
-        imagem: "destaque.png"
-      },
-      {
-        titulo: "CREATINA",
-        produtos: [
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          }
-        ],
-        imagem: "destaque.png"
-      },
-      {
-        titulo: "PRÉ-TREINO",
-        produtos: [
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          }
-        ],
-        imagem: "destaque.png"
-      },
-      {
-        titulo: "BARRA DE PROTEÍNA",
-        produtos: [
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          }
-        ],
-        imagem: "destaque.png"
-      }
-    ])
+  const api_url: string = "http://localhost:3000"
+
+  const [highlightCategories] = useState<TypeHighlightCategory[]>([])
+
+  const fetchProducts = (url: string) => {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
+  useEffect(() => {
+    fetchProducts(`${api_url}/products/asc`)
+  }, []);
 
   return (
     <main>
@@ -238,17 +65,17 @@ const PaginaInicial = () => {
 
         <div className="carousel-container">
           <Carousel containerClass="carousel" responsive={ carousel_responsive } infinite={ true }>
-            { categoriasSlider.map((categoria_slider) => { 
+            { categoriesSlider.map((category_slider) => { 
               return <CategoriaCard 
-                        key={ categoria_slider.nome } 
-                        categoria_slider={ categoria_slider }
+                        key={ category_slider.name } 
+                        category_slider={ category_slider }
                       /> }) }
           </Carousel>
         </div>
 
-        { categoriaDestaque.map((categoria_destaque, index) => {
+        { highlightCategories.map((highlight_category, index) => {
           const direcao: string = index % 2 === 0 ? "direita" : "esquerda"
-          return <CategoriaDestaque categoria_destaque={ categoria_destaque } posicao_destaque={ direcao }/>
+          return <CategoriaDestaque highlight_category={ highlight_category } highlight_position={ direcao }/>
         }) }
         
       </main>
