@@ -18,31 +18,31 @@ const PaginaInicial = () => {
   const [categoriesSlider] = useState<TypeCategorySlider[]>([
     {
       name: "Creatina",
-      icon: "creatina.png"
+      icon: "categories-slider-creatina.png"
     },
     {
       name: "Whey",
-      icon: "creatina.png"
+      icon: "categories-slider-whey.png"
     },
     {
       name: "Pré-treino",
-      icon: "creatina.png"
+      icon: "categories-slider-pretreino.png"
     },
     {
       name: "Barra de proteína",
-      icon: "creatina.png"
+      icon: "categories-slider-barradeproteina.png"
     },
     {
       name: "Caneleira",
-      icon: "creatina.png"
+      icon: "categories-slider-caneleira.png"
     },
     {
       name: "Hipercalórico",
-      icon: "creatina.png"
+      icon: "categories-slider-hipercalorico.png"
     },
     {
       name: "Ômega 3",
-      icon: "creatina.png"
+      icon: "categories-slider-omega3.png"
     }
   ])
 
