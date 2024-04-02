@@ -15,15 +15,17 @@ app.use(
   })
 );
 
-import router from "@routes/products-router";
-import routerCategory from "@routes/category-router"
-app.use(router);
-app.use(routerCategory);
-
 // Json - BodyParser
 import bodyParser from "body-parser";
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+import router from "@routes/products-router";
+import routerCategory from "@routes/category-router";
+import routerTransaction from "@routes/transaction-router";
+app.use(router);
+app.use(routerCategory);
+app.use(routerTransaction);
 
 app
   .listen(port, () => {

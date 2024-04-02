@@ -25,6 +25,12 @@ const Errors: { [key: string]: ErrorSet } = {
       success: false,
       message: "No category found!",
     },
+    PRODUCT_NOT_RECEIVED: {
+      code: 404,
+      success: false,
+      message:
+        "The product could not be found, please verify your purchase and try again!",
+    },
     INTERNAL_SERVER_ERROR: {
       code: 500,
       success: false,
@@ -47,6 +53,12 @@ const Errors: { [key: string]: ErrorSet } = {
       success: false,
       message: "Nenhuma categoria encontrada!",
     },
+    PRODUCT_NOT_RECEIVED: {
+      code: 404,
+      success: false,
+      message:
+        "Não foi possivel encontrar o produto, verifique sua compra e tente novamente!",
+    },
     INTERNAL_SERVER_ERROR: {
       code: 500,
       success: false,
@@ -68,6 +80,12 @@ const Errors: { [key: string]: ErrorSet } = {
       code: 404,
       success: false,
       message: "¡No se encontró ninguna categoría!",
+    },
+    PRODUCT_NOT_RECEIVED: {
+      code: 404,
+      success: false,
+      message:
+        "No se pudo encontrar el producto, verifique su compra e inténtelo nuevamente.",
     },
     INTERNAL_SERVER_ERROR: {
       code: 500,
