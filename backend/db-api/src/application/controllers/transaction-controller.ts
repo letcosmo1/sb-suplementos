@@ -30,7 +30,6 @@ export class TransactionController {
 Nome do Produto: ${result.product.name}
 Preço: ${result.product.price}
 ${result.product.flavor ? `Sabor: ${result.product.flavor}` : ""}
-Descrição: ${result.product.description}
 
 Por favor, envie-me mais informações sobre como proceder com a compra. Meu ID de transação é: ${
         result.product.transactionID
