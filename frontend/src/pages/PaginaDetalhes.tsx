@@ -45,7 +45,7 @@ const PaginaDetalhes = () => {
                 { ">" }
                 {<Link to={`/produtos/${product.category}`}>{ product.category }</Link> }
                 { ">" }
-                <Link to={"/produto"}>{ product.name }</Link>
+                <Link to={`/produto/${id}`}>{ product.name }</Link>
             </nav>
 
             <div className="detalhes-container">
