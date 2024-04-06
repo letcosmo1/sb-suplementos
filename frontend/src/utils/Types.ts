@@ -19,3 +19,9 @@ export type TypeHighlightCategory = {
     products: Array<TypeProduct>,
     highlight_image: string
 }
+export type TypeSaleProduct = {
+    name: string;
+    price: number;
+    description: string;
+    flavor?: string | any
+}

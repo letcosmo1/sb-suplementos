@@ -2,10 +2,10 @@ import './PaginaDetalhes.css'
 import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { TypeProduct } from '../utils/Types';
+import { TypeProduct, TypeSaleProduct } from '../utils/Types';
 import { getImageUrl } from '../utils/ImageUrl';
 import { useEffect, useState } from 'react';
-import { getProductById } from '../api/DatabaseApi';
+import { getProductById, sendProductForSale } from '../api/DatabaseApi';
 
 const PaginaDetalhes = () => {
     const { id } = useParams()
@@ -22,10 +22,21 @@ const PaginaDetalhes = () => {
         nutritional_table: ""
     })
 
+    const [saleProduct, setSaleProduct] = useState<TypeSaleProduct>({
+        name: "",
+        price: 0,
+        description: "",
+        flavor: ""
+    })
+
     const [selectedImage, setSelectedImage] = useState<string>("")
 
     const toggleImage = (imagem_url: string) => {
         setSelectedImage(imagem_url)
+    }
+
+    const whatsappRedirect = () => {
+        sendProductForSale(saleProduct)
     }
     
     useEffect(() => {
@@ -33,6 +44,12 @@ const PaginaDetalhes = () => {
             .then(data => {
                 setProduct(data)
                 setSelectedImage(data.image)
+                setSaleProduct({
+                    name: data.name,
+                    price: data.price,
+                    description: data.description,
+                    flavor: data.flavor
+                })
             })
     }, []);
 
@@ -78,7 +95,7 @@ const PaginaDetalhes = () => {
                 <section className="produto-preco">
                     <h3>Preço</h3>
                     <p>R${ product.price }</p>
-                    <button><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
+                    <button onClick={ whatsappRedirect }><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
                 </section>
             </div>
 

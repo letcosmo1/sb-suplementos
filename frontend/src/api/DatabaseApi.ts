@@ -1,4 +1,4 @@
-import { TypeHighlightCategory, TypeProduct } from "../utils/Types"
+import { TypeHighlightCategory, TypeProduct, TypeSaleProduct } from "../utils/Types"
 
 const api_url: string = "http://localhost:3000"
 
@@ -28,4 +28,13 @@ export const getProductsByCategory = (order: string, category: string) => {
                 products = data
                 return products
             })
+}
+export const sendProductForSale = (product: TypeSaleProduct) => {
+    fetch(`${api_url}/sale`, {
+        method: "POST",
+        body: JSON.stringify(product),
+        headers: {"Content-type": "application/json"}    
+    })
+        .then(res => res.json())
+        .then(console.log)
 }
