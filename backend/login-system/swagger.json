@@ -1,0 +1,498 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Redefine Password",
+    "description": "An API to reset the password using a token.",
+    "contact": {
+      "name": "Kledson Vinicius",
+      "email": "kledsonvinicius0702@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001/user/",
+      "description": "URL API test"
+    }
+  ],
+  "paths": {
+    "/signin": {
+      "post": {
+        "summary": "User login",
+        "description": "This route authenticates the user",
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              },
+              "examples": {
+                "login": {
+                  "value": {
+                    "email": "<teste@teste.com>",
+                    "password": "<senhatest123>"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": {
+                    "success": true,
+                    "message": "<Usuario logado com sucesso.>",
+                    "token": "<TOKEN>"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": {
+                    "error": "<Senha incorreta.>",
+                    "success": false,
+                    "typeError": "<hashPasswordHelper>",
+                    "codeError": 422
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": {
+                    "error": "<Email não cadastrado!>",
+                    "success": false,
+                    "typeError": "<email don't exists userRepository>",
+                    "codeError": 422
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "userLoginIntoRepository",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": {
+                    "error": "<Unexpected error>",
+                    "success": false,
+                    "typeError": "unexpected error",
+                    "codeError": 500
+                  }
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "loginUser in UserController.ts",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": {
+                    "error": "<Unexpected error>",
+                    "success": false,
+                    "typeError": "unexpected error",
+                    "codeError": 501
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gettoken": {
+      "get": {
+        "summary": "Get info user by token",
+        "description": "This route check the user token",
+        "tags": ["User"],
+        "security": [{ "bearerAuth": {} }],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token de autorização no formato 'Bearer <token>'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "gettoken": {
+                    "value": {
+                      "id": "<ID>",
+                      "name": "<NAME>",
+                      "email": "<EMAIL>",
+                      "exp": "<EXP>",
+                      "iat": "<IAT>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "gettoken": {
+                    "value": {
+                      "error": "<Invalid Token>",
+                      "success": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "summary": "User register",
+        "description": "This route register the user",
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegister"
+              },
+              "examples": {
+                "register": {
+                  "value": {
+                    "name": "******",
+                    "surname": "******",
+                    "telephone": "(**) *****-****",
+                    "birth": "**/**/****",
+                    "email": "*****************@******.***",
+                    "password": "**********",
+                    "confirmPassword": "**********"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "success": true,
+                      "message": "<Usuario criado com sucesso>",
+                      "user": {
+                        "name": "<NAME>",
+                        "surname": "<SURNAME>",
+                        "telephone": "<PHONE>",
+                        "birth": "<DATA>",
+                        "email": "<EMAIL>",
+                        "password": "<PASSWORD HASH>",
+                        "lastModified": "<DATA>",
+                        "_id": "<ID>",
+                        "__v": 0
+                      },
+                      "token": "<TOKEN>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "error": "<Email já cadastrado!>",
+                      "success": false,
+                      "typeError": "<email exists userRepository>",
+                      "codeError": 409
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "error": [
+                        {
+                          "type": "<TYPE>",
+                          "value": "<VALUE>",
+                          "msg": "<MESSAGE>",
+                          "path": "<PATH>",
+                          "location": "<LOCATION>"
+                        }
+                      ],
+                      "success": false,
+                      "typeError": "userRegisterValid",
+                      "codeError": 422
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sendtoken": {
+      "post": {
+        "summary": "User send token",
+        "description": "This route sends the token to the user's email",
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSendToken"
+              },
+              "examples": {
+                "send token": {
+                  "value": {
+                    "email": "*****************@******.***"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "success": true,
+                      "message": "<Codigo enviado com sucesso!>",
+                      "email": "<EMAIL>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "send token": {
+                    "value": {
+                      "error": "<Email não cadastrado!>",
+                      "success": false,
+                      "typeError": "<email don't exists userRepository>",
+                      "codeError": 422
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "localError": "sendCode in UserController.ts",
+                      "codeError": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/redefine/{token}": {
+      "patch": {
+        "summary": "User redefine password",
+        "description": "This route resets your password",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token parameter in the path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRedefine"
+              },
+              "examples": {
+                "redefine": {
+                  "value": {
+                    "password": "******",
+                    "confirmPassword": "******"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "success": true,
+                      "message": "<Senha alterada com sucesso!>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "send token": {
+                    "value": {
+                      "error": "<Token inválido!>",
+                      "success": false,
+                      "typeError": "<Redefine Password>",
+                      "codeError": 422
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "register": {
+                    "value": {
+                      "localError": "sendCode in UserController.ts",
+                      "codeError": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "UserSendToken": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "UserRedefine": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "confirmpassword": {
+            "type": "string"
+          }
+        }
+      },
+      "UserRegister": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "surname": {
+            "type": "string"
+          },
+          "telephone": {
+            "type": "string"
+          },
+          "birth": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

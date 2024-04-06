@@ -1,0 +1,1 @@
+export type databaseTypes = any;

@@ -1,0 +1,5 @@
+*.env
+.env.teste
+node_modules
+Details.txt
+__tests__

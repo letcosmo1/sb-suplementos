@@ -4,5 +4,6 @@ export interface IProductSale {
     price: number;
     description: string;
     transactionID?: number | any;
+    flavor?: string | any
   };
 }

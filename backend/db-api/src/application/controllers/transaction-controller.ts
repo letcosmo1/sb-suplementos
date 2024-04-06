@@ -25,17 +25,21 @@ export class TransactionController {
       const transactionUseCase = new GenerateSaleUseCase();
       const result: IProductSale = await transactionUseCase.execute(product);
 
-      const whatsappMessage =
-        encodeURIComponent(`Olá! Gostaria de comprar o seguinte produto:
+      const message = `Olá! Gostaria de comprar o seguinte produto:
 
-      Nome do Produto: ${result.product.name}
-      Preço: ${result.product.price}
-      Descrição: ${result.product.description}
-      
-      Por favor, envie-me mais informações sobre como proceder com a compra. Meu ID de transação é: ${result.product.transactionID}
-      
-      Obrigado(a)!
-      `);
+Nome do Produto: ${result.product.name}
+Preço: ${result.product.price}
+${result.product.flavor ? `Sabor: ${result.product.flavor}` : ""}
+Descrição: ${result.product.description}
+
+Por favor, envie-me mais informações sobre como proceder com a compra. Meu ID de transação é: ${
+        result.product.transactionID
+      }
+
+Obrigado(a)!
+`;
+
+      const whatsappMessage = encodeURIComponent(message);
       const url = `https://wa.me/${telephone}?text=${whatsappMessage}`;
 
       return res
