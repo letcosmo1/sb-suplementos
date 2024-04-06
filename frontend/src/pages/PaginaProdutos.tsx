@@ -1,115 +1,68 @@
 import './PaginaProdutos.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ProdutoCard from '../components/ProdutoCard'
-import { useState } from 'react'
-import { TypeProduto } from '../utils/Types'
+import { BaseSyntheticEvent, useEffect, useState } from 'react'
+import { TypeProduct } from '../utils/Types'
+import { getAllProducts, getProductsByCategory } from '../api/DatabaseApi'
 
 const PaginaProdutos = () => {
-    const [produtos] = useState<TypeProduto[]>([
-        {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          },
-          {
-            categoria: "Creatina",
-            imagem: "whey.png",
-            nome: "Creatina 100g Creapture - Growth Supplements",
-            preco: 999.99,
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare nulla auctor, dignissim lectus vel, viverra nunc. Fusce ac maximus lectus. Ut mollis, lacus id finibus placerat, dolor tortor placerat eros, non fermentum eros quam vitae ex.",
-            sabor: "Chocolate",
-            peso: "900g",
-            tabela_nutricional: "tbl-nutricional.png"
-          }
-    ])
+    const select: HTMLSelectElement | null = document.querySelector("#select-ordenacao")
+    const { categoria } = useParams()
+
+    useEffect(() => {
+        if(select) select.value = "asc"
+
+        if(categoria) {
+            getProductsByCategory("asc", categoria)
+                .then(data => setProducts(data))
+        } else {
+            getAllProducts("asc")
+                .then(data => setProducts(data))
+        }
+    }, [categoria]);
+
+    const [products, setProducts] = useState<TypeProduct[]>([])
+
+    const handleOrdenacaoChange = (e: BaseSyntheticEvent) => {
+        const ordenacao: string = e.target.value
+        
+        if(categoria) {
+            getProductsByCategory(ordenacao, categoria)
+                .then(data => setProducts(data))
+        } else {
+            getAllProducts(ordenacao)
+                .then(data => setProducts(data))
+        }
+    }
 
     return (
         <main className="pagina-produtos">
             <nav className="produtos-breadcrumbs">
                 <Link to={"/"}>Página Inicial</Link>
-                &gt;
+                { ">" }
                 <Link to={"/produtos"}>Produtos</Link>
+                { categoria && ">" }
+                { categoria && <Link to={`/produtos/${categoria}`}>{ categoria }</Link> }
             </nav>
 
             <div className="produtos-container">
-                <h2>TODOS OS PRODUTOS</h2>
+                <h2>
+                    { categoria ? categoria.toUpperCase() : "TODOS OS PRODUTOS" }
+                </h2>
                 
                 <section className="produtos">
                     <div className="ordenacao-container">
                         <label htmlFor="order">Ordenação: </label>
-                        <select name="orden">
-                            <option value="az">A - Z</option>
-                            <option value="za">Z - A</option>
+                        <select id="select-ordenacao" name="order" onChange={ handleOrdenacaoChange }>
+                            <option value="asc">A - Z</option>
+                            <option value="desc">Z - A</option>
+                            <option value="price/asc">Menor preço</option>
+                            <option value="price/desc">Maior preço</option>
                         </select>
                     </div>
                     
-                    { produtos.map((produto) => {
-                        return <ProdutoCard produto={ produto }/>
+                    { products.map((product) => {
+                        return <ProdutoCard key={ product._id } product={ product }/>
                     }) }
                     
                 </section>
