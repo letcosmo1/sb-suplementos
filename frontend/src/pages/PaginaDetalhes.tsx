@@ -25,7 +25,6 @@ const PaginaDetalhes = () => {
     const [saleProduct, setSaleProduct] = useState<TypeSaleProduct>({
         name: "",
         price: 0,
-        description: "",
         flavor: ""
     })
 
@@ -37,6 +36,7 @@ const PaginaDetalhes = () => {
 
     const whatsappRedirect = () => {
         sendProductForSale(saleProduct)
+            .then(data => window.open(data, '_blank'))
     }
     
     useEffect(() => {
@@ -47,7 +47,6 @@ const PaginaDetalhes = () => {
                 setSaleProduct({
                     name: data.name,
                     price: data.price,
-                    description: data.description,
                     flavor: data.flavor
                 })
             })

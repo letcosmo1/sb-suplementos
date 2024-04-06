@@ -27,15 +27,13 @@ export class TransactionController {
 
       const message = `Olá! Gostaria de comprar o seguinte produto:
 
-Nome do Produto: ${result.product.name}
+${result.product.name}
 Preço: ${result.product.price}
 ${result.product.flavor ? `Sabor: ${result.product.flavor}` : ""}
 
-Por favor, envie-me mais informações sobre como proceder com a compra. Meu ID de transação é: ${
-        result.product.transactionID
-      }
+Por favor, envie-me mais informações sobre como proceder com a compra. 
 
-Obrigado(a)!
+Meu ID de transação é: ${result.product.transactionID}
 `;
 
       const whatsappMessage = encodeURIComponent(message);

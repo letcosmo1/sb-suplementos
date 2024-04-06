@@ -5,7 +5,7 @@ export class ProductSaleValidatorService {
     if (!product) {
       return false;
     }
-    if (!product.name || !product.price || !product.description) {
+    if (!product.name || !product.price ) {
       return false;
     }
     return true;

@@ -22,6 +22,5 @@ export type TypeHighlightCategory = {
 export type TypeSaleProduct = {
     name: string;
     price: number;
-    description: string;
     flavor?: string | any
 }
