@@ -6,7 +6,7 @@ import { TypeProduct, TypeSaleProduct } from '../utils/Types';
 import { getImage } from '../utils/ImageUrl';
 import { useEffect, useState } from 'react';
 import { getProductById, sendProductForSale } from '../api/DatabaseApi';
-import { toReais } from '../utils/StringFormat';
+import { capitalizeFirstLetter, toReais } from '../utils/StringFormat';
 
 const PaginaDetalhes = () => {
     const { id } = useParams()
@@ -62,19 +62,22 @@ const PaginaDetalhes = () => {
                 { ">" }
                 {<Link to={`/produtos/${product.category}`}>{ product.category }</Link> }
                 { ">" }
-                <Link to={`/produto/${id}`}>{ product.name }</Link>
+                <Link to={`/produto/${id}`}>{ capitalizeFirstLetter(product.name)  }</Link>
             </nav>
 
             <div className="detalhes-container">
-                <section className="produto-imagens">
+                <section className="produto-imagens"> 
                     <div className="img-nav">
                         <div onClick={ () => toggleImage(product.image) }>
                             <img src={ getImage(product.image) } />
                         </div>
+                        { product.table &&
                         <div onClick={ () => toggleImage(product.table) }>
                             <img src={ getImage(product.table) } />
                         </div>
+                        }
                     </div>
+                    
                     <div className="img-selecionada">
                         <img src={ getImage(selectedImage) } />
                     </div>
@@ -82,14 +85,18 @@ const PaginaDetalhes = () => {
 
                 <section className="produto-info">
                     <h2>{ product.name }</h2>
+                    {product.flavor &&
                     <div>
                         <h3>Sabor</h3>
                         <p>{ product.flavor }</p>
                     </div>
+                    }
+                    {product.weight &&
                     <div>
                         <h3>Peso</h3>
                         <p>{ product.weight }</p>
                     </div>
+                    }
                 </section>
 
                 <section className="produto-preco">
@@ -98,11 +105,14 @@ const PaginaDetalhes = () => {
                     <button onClick={ whatsappRedirect }><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
                 </section>
             </div>
-
+            
             <section className="produto-descricao">
+                {/*
                 <h2>Descrição</h2>
                 <p>{ product.description }</p>
+                */}
             </section>
+            
         </main>
     )
   }
