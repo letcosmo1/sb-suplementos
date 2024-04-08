@@ -9,7 +9,7 @@ const ProductSchema: Schema = new Schema({
   flavor: { type: String, required: true },
   weight: { type: String, required: true },
   category: { type: String, required: true },
-  nutritional_table: { type: String, required: true },
+  table: { type: String, required: true },
 });
 
 const ProductModel = mongoose.model<IProduct>("products", ProductSchema);
