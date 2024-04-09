@@ -11,7 +11,7 @@ const CategoriaCard = ({ category_slider }:PropTypes) => {
 
     return (
         <div className="categoria-card">
-            <Link to={`/produtos/${category_slider.name}`}>
+            <Link to={`/produtos?categoria=${category_slider.name}`}>
                 <img src={ getImage(category_slider.icon) } />
             </Link>
             

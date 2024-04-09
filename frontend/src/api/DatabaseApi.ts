@@ -16,6 +16,11 @@ export const getAllProducts = (order: string) => {
     .then((res) => res.json())
     .then((data: TypeProduct[]) => data)
 }
+export const getProductsByName = (name: string) => {
+  return fetch(`${api_url}/products/${name}`)
+    .then((res) => res.json())
+    .then((data: TypeProduct[]) => data)
+}
 export const getProductById = (id: string | undefined) => {
   return fetch(`${api_url}/product/${id}`)
     .then((res) => res.json())

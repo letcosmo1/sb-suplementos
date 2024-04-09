@@ -15,7 +15,7 @@ export class ProductsRepository {
 
   async getProductByName(title: title): Promise<IProduct[]> {
     const product: IProduct[] = await ProductModel.find({
-      productName: { $regex: title, $options: "i" },
+      name: { $regex: title, $options: "i" },
     });
     return product;
   }
