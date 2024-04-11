@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import PaginaDetalhes from "./pages/PaginaDetalhes";
 import PaginaProdutos from "./pages/PaginaProdutos";
+import PaginaLogin from "./pages/PaginaLogin";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
+        <Route path="/login" element={<PaginaLogin />} />
         <Route path="/produtos" element={<PaginaProdutos />}/>
         <Route path="/produto/:id" element={<PaginaDetalhes />} />
       </Routes>

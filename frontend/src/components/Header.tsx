@@ -1,11 +1,13 @@
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import { BaseSyntheticEvent, useState } from 'react'
 
 const Header = () => {
+  const location = useLocation();
+
     const [pesquisa, setPesquisa] = useState<string>("")
 
     const handlePesquisaChange = (e: BaseSyntheticEvent) => {
@@ -16,6 +18,7 @@ const Header = () => {
       <header>
         <Link to={"/"} className="header-logo"><Logo /></Link>
         
+        {location.pathname !== "/login" && 
         <form>
             <input type="text" placeholder="Pesquisar" onChange={ handlePesquisaChange }/>
             
@@ -23,6 +26,7 @@ const Header = () => {
               <button><FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize: 15, color: "var(--gray)"}} /></button>
             </Link>
         </form>
+        }
 
         <div className="filler"></div>
       </header>
