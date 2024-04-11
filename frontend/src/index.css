@@ -27,6 +27,7 @@
     --light-gray: #D9D9D9;
     --lighter-gray: #f0f0f0;
     --green: #25844B;
+    --red: #e03100;
 }
 input:focus {
     outline: none;
