@@ -1,21 +1,44 @@
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
+import { BaseSyntheticEvent, useState } from 'react'
 
-const Header = () => {
+const Header = ({ isLoggedIn, setIsLoggedIn }: any) => {
+    const location = useLocation()
+
+    const [pesquisa, setPesquisa] = useState<string>("")
+
+    const handlePesquisaChange = (e: BaseSyntheticEvent) => {
+      setPesquisa(e.target.value)
+    }
+    const handleLogout = () => {
+      if(localStorage.getItem("token")) {
+        localStorage.removeItem("token")
+        setIsLoggedIn(false)
+      }
+    }
 
     return (
       <header>
         <Link to={"/"} className="header-logo"><Logo /></Link>
         
+        {location.pathname !== "/login" && 
         <form>
-            <input type="text" placeholder="Pesquisar"/>
-            <button><FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize: 15, color: "var(--gray)"}} /></button>
+            <input type="text" placeholder="Pesquisar" onChange={ handlePesquisaChange }/>
+            
+            <Link to={`/produtos?pesquisa=${pesquisa}`}>
+              <button><FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize: 15, color: "var(--gray)"}} /></button>
+            </Link>
         </form>
+        }
 
-        <div className="filler"></div>
+        <div className="header-logout">
+          { isLoggedIn &&
+          <FontAwesomeIcon onClick={ handleLogout } icon={ faRightFromBracket } />
+          }
+        </div>
       </header>
     )
   }

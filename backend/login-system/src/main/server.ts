@@ -15,6 +15,13 @@ connectToMongoDB();
 const app = express();
 const port = process.env.PORT;
 
+import cors from "cors";
+app.use(
+  cors({
+    origin: process.env.CORS_URL,
+  })
+);
+
 // Json - BodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

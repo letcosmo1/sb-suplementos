@@ -21,6 +21,15 @@ footer {
 .footer-info div {
     margin-right: 128px;
 }
+.footer-admin {
+    display: flex;
+    align-items: flex-end;
+    margin-left: 128px;
+}
+.footer-admin a {
+    cursor: text;
+    color: var(--white);
+}
 .footer-links {
     display: flex;
     flex-direction: column;

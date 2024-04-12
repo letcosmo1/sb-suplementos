@@ -5,7 +5,7 @@ import Carousel from 'react-multi-carousel'
 import { useEffect, useState } from 'react'
 import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
-import { getHighlightCategories } from '../api/DatabaseApi'
+import { getHighlightCategories } from '../api/ProductApi'
 
 const PaginaInicial = () => {
   const carousel_responsive = {
@@ -29,19 +29,35 @@ const PaginaInicial = () => {
       icon: "categories-slider-pretreino.png"
     },
     {
-      name: "Barra de proteína",
+      name: "Barra de Proteína",
       icon: "categories-slider-barradeproteina.png"
     },
     {
-      name: "Caneleira",
+      name: "Joelheira",
       icon: "categories-slider-caneleira.png"
+    },
+    {
+      name: "Tornoseleira",
+      icon: "categories-slider-caneleira.png"
+    },
+    {
+      name: "Coqueteleira",
+      icon: "categories-slider-coqueteleira.png"
     },
     {
       name: "Hipercalórico",
       icon: "categories-slider-hipercalorico.png"
     },
     {
+      name: "Albumina",
+      icon: "categories-slider-hipercalorico.png"
+    },
+    {
       name: "Ômega 3",
+      icon: "categories-slider-omega3.png"
+    },
+    {
+      name: "Thermo Flame",
       icon: "categories-slider-omega3.png"
     }
   ])
