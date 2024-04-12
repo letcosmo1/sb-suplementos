@@ -4,11 +4,9 @@ import { faMagnifyingGlass, faRightFromBracket } from '@fortawesome/free-solid-s
 import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import { BaseSyntheticEvent, useState } from 'react'
-import { logout } from '../api/LoginApi'
 
-const Header = () => {
+const Header = ({ isLoggedIn, setIsLoggedIn }: any) => {
     const location = useLocation()
-    const token = localStorage.getItem("token")
 
     const [pesquisa, setPesquisa] = useState<string>("")
 
@@ -16,7 +14,10 @@ const Header = () => {
       setPesquisa(e.target.value)
     }
     const handleLogout = () => {
-      logout()
+      if(localStorage.getItem("token")) {
+        localStorage.removeItem("token")
+        setIsLoggedIn(false)
+      }
     }
 
     return (
@@ -34,7 +35,7 @@ const Header = () => {
         }
 
         <div className="header-logout">
-          { token &&
+          { isLoggedIn &&
           <FontAwesomeIcon onClick={ handleLogout } icon={ faRightFromBracket } />
           }
         </div>

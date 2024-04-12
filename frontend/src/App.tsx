@@ -7,15 +7,24 @@ import Footer from "./components/Footer";
 import PaginaDetalhes from "./pages/PaginaDetalhes";
 import PaginaProdutos from "./pages/PaginaProdutos";
 import PaginaLoginAdm from "./pages/PaginaLoginAdm";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+
+  useEffect(() => {
+    if(localStorage.getItem("token")) {
+      setIsLoggedIn(true)
+    }
+  },[])
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header showLogout={ isLoggedIn } setIsLoggedIn={ setIsLoggedIn } />
       <Nav />
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
-        <Route path="/admin/login" element={<PaginaLoginAdm />} />
+        <Route path="/admin/login" element={<PaginaLoginAdm setIsLoggedIn={ setIsLoggedIn } />} />
         <Route path="/produtos" element={<PaginaProdutos />}/>
         <Route path="/produto/:id" element={<PaginaDetalhes />} />
       </Routes>

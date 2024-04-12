@@ -4,7 +4,7 @@ import './PaginaLoginAdm.css'
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../api/LoginApi';
 
-const PaginaLogin = () => {
+const PaginaLogin = ({ setIsLoggedIn }: any) => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState<string>("")
@@ -24,6 +24,7 @@ const PaginaLogin = () => {
             .then((data: string) => {
                 if(data) {
                     localStorage.setItem("token", data)
+                    setIsLoggedIn(true)
                     navigate("/produtos")
                 } else {
                     setMessage("*Login ou senha inválida.")

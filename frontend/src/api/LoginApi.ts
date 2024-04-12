@@ -13,11 +13,3 @@ export const signIn = (email: string, password: string) => {
             return token
           })
 }
-
-export const logout = () => {
-    if(localStorage.getItem("token")) {
-      localStorage.removeItem("token")
-      return true
-    }
-    return false
-}
