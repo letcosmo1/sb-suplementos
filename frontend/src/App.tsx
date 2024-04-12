@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Header showLogout={ isLoggedIn } setIsLoggedIn={ setIsLoggedIn } />
+      <Header isLoggedIn={ isLoggedIn } setIsLoggedIn={ setIsLoggedIn } />
       <Nav />
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
