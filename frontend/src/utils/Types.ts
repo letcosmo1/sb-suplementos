@@ -20,7 +20,7 @@ export type TypeHighlightCategory = {
     image: string
 }
 export type TypeSaleProduct = {
-    name: string;
-    price: number;
+    name: string,
+    price: number,
     flavor?: string | any
 }

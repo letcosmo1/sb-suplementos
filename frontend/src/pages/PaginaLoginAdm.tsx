@@ -1,36 +1,34 @@
 import { BaseSyntheticEvent, useState } from 'react'
 import Logo from '../components/Logo'
-import './PaginaLogin.css'
+import './PaginaLoginAdm.css'
 import { useNavigate } from 'react-router-dom';
+import { signIn } from '../api/LoginApi';
 
 const PaginaLogin = () => {
     const navigate = useNavigate();
-    const mensagem: HTMLElement | null = document.querySelector(".login-message")
-
-    const login_valido = {
-        email: "dev@dev.com",
-        senha: "dev123"
-    }
 
     const [email, setEmail] = useState<string>("")
-    const [senha, setSenha] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [message, setMessage] = useState<string>("")
 
     const handleEmailChange = (e: BaseSyntheticEvent) => {
         setEmail(e.target.value)
     }
     const handleSenhaChange = (e: BaseSyntheticEvent) => {
-        setSenha(e.target.value)
+        setPassword(e.target.value)
     }
     const handleSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault()
 
-        if(login_valido.email === email && 
-           login_valido.senha === senha) {
-            localStorage.setItem("token", "token-secreto")
-            navigate("/produtos")
-        } else {
-            if(mensagem) mensagem.innerHTML = "*E-mail ou senha inválida."
-        }
+        signIn(email, password)
+            .then((data: string) => {
+                if(data) {
+                    localStorage.setItem("token", data)
+                    navigate("/produtos")
+                } else {
+                    setMessage("*Login ou senha inválida.")
+                }
+            })
     }
 
     return (
@@ -43,7 +41,7 @@ const PaginaLogin = () => {
                 </div>
                 <button onClick={ handleSubmit }>OK</button>
             </form>
-            <p className="login-message"></p>
+            <p className="login-message">{ message }</p>
         </main>
     )
   }

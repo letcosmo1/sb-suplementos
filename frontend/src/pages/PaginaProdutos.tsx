@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import ProdutoCard from '../components/ProdutoCard'
 import { BaseSyntheticEvent, useEffect, useState } from 'react'
 import { TypeProduct } from '../utils/Types'
-import { getAllProducts, getProductsByCategory, getProductsByName } from '../api/DatabaseApi'
+import { getAllProducts, getProductsByCategory, getProductsByName } from '../api/ProductApi'
 
 const PaginaProdutos = () => {
     const select: HTMLSelectElement | null = document.querySelector("#select-ordenacao")

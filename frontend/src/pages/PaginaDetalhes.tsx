@@ -5,7 +5,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { TypeProduct, TypeSaleProduct } from '../utils/Types';
 import { getImage } from '../utils/ImageUrl';
 import { useEffect, useState } from 'react';
-import { getProductById, sendProductForSale } from '../api/DatabaseApi';
+import { getProductById, sendProductForSale } from '../api/ProductApi';
 import { capitalizeFirstLetter, toReais } from '../utils/StringFormat';
 
 const PaginaDetalhes = () => {

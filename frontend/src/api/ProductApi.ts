@@ -4,7 +4,7 @@ import {
   TypeSaleProduct,
 } from "../utils/Types";
 
-const api_url: string = "http://localhost:3000";
+const api_url: string = "http://localhost:3000"
 
 export const getHighlightCategories = () => {
   return fetch(`${api_url}/categories/hl`)

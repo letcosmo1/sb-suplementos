@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faUserGear } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
 
     return (
         <footer>
-            <div className="footer-info-container">
+            <div className="footer-info-container"> 
                 <Link to={"/"}><Logo /></Link>
                 <section className="footer-info">
                     <div>
@@ -22,13 +23,16 @@ const Footer = () => {
                         <p>Avenida Paulista, 999, Loja 12,</p>
                         <p>Bela Vista, São Paulo, SP, 01311-000</p>
                     </address>
+                    <div className="footer-admin">
+                        <Link to={"/admin/login"}>Admin</Link>
+                    </div>
                 </section>
             </div>
             
             <address className="footer-links">
-                <Link to={"/"}><FontAwesomeIcon icon={faEnvelope} />email@email.com</Link>
-                <Link to={"/"}><FontAwesomeIcon icon={faInstagram} />@instagram</Link>
-                <Link to={"/"}><FontAwesomeIcon icon={faWhatsapp} />+99 (99) 99999-9999</Link>
+                <Link to={"/"}><FontAwesomeIcon icon={ faEnvelope } />email@email.com</Link>
+                <Link to={"/"}><FontAwesomeIcon icon={ faInstagram } />@instagram</Link>
+                <Link to={"/"}><FontAwesomeIcon icon={ faWhatsapp } />+99 (99) 99999-9999</Link>
             </address>
         </footer>
     )
