@@ -10,6 +10,7 @@ export interface IProduct extends Document {
   productWeight: number;
   nutritionalTable: string;
   productCategory: string;
+  available: boolean;
 }
 
 export interface IProductRepository {

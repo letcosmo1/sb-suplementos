@@ -111,10 +111,9 @@ export class UserController {
     const token = getTokenHelper(req);
     const validToken: any = await validTokenHelper(token);
 
-    if (validToken?.success === false)
-      return res.status(401).json({ error: "Invalid Token", success: false });
-
     try {
+      if (validToken?.success === false)
+        return res.status(401).json({ error: "Invalid Token", success: false });
       res.status(200).json(validToken);
     } catch (error) {
       res.status(500).json(error);
@@ -177,7 +176,6 @@ export class UserController {
     if (result && result.success === false)
       return res.status(result.codeError).json(result);
 
-    
     try {
       res.status(200).json({
         success: true,

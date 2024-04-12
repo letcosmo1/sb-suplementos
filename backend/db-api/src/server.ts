@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 import router from "@routes/products-router";
 import routerCategory from "@routes/category-router";
 import routerTransaction from "@routes/transaction-router";
+import routerAdmin from "@routes/user-admin-router";
+app.use(routerAdmin);
 app.use(router);
 app.use(routerCategory);
 app.use(routerTransaction);
