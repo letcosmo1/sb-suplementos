@@ -56,6 +56,7 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
     const token: string | null = localStorage.getItem("token");
 
     if (isLoggedIn && token) {
+        console.log(product._id)
       updateProductAvailableAdm(token, product._id, !available);
       let updated_product: TypeProduct = product;
       updated_product.available = !available;

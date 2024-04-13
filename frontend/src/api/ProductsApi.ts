@@ -12,7 +12,7 @@ export const getHighlightCategories = () => {
     .then((data: TypeHighlightCategory[]) => data);
 };
 export const getAllProductsAdm = (token: string) => {
-  return fetch(`${api_url}/admin`, {
+  return fetch(`${api_url}/admin/produtos`, {
     method: "GET",
     headers: { authorization: `Bearer ${token}` },
   })
@@ -63,6 +63,7 @@ export const updateProductAvailableAdm = (
   _id: string,
   available: boolean
 ) => {
+  console.log(_id)
   return fetch(`${api_url}/admin/patch/${_id}`, {
     method: "PATCH",
     headers: {
@@ -71,5 +72,7 @@ export const updateProductAvailableAdm = (
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ available: available }),
-  }).then((res) => res.json());
-};
+  })
+    .then((res) => res.json())
+    .then(console.log)
+}

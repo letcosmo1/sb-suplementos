@@ -9,11 +9,11 @@ export class UserADMRepository {
   }
 
   async patchProductADM(
-    _uid: _id,
+    _id: _id,
     available: available
   ): Promise<IProduct | null> {
     const product: IProduct | null = await ProductModel.findOneAndUpdate(
-      { id: _uid },
+      { _id: _id },
       { available: available }
     );
     return product;

@@ -32,8 +32,8 @@ export class PatchProductADMUseCase {
   constructor(productADMRepository: IProductADMRepository) {
     this.productADMRepository = productADMRepository;
   }
-  async execute(_uid: _id, available: available): Promise<IProduct | null> {
-    return this.productADMRepository.patchProductADM(_uid, available);
+  async execute(_id: _id, available: available): Promise<IProduct | null> {
+    return this.productADMRepository.patchProductADM(_id, available);
   }
 }
 

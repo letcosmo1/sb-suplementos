@@ -14,7 +14,7 @@ routerAdmin.get(
 );
 
 routerAdmin.patch(
-  "/patch/:_uid",
+  "/patch/:_id",
   VerifyUserMiddleware,
   async (req: Request, res: Response) => {
     await ProductADMController.patchProductADM(req, res);

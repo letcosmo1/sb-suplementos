@@ -65,13 +65,13 @@ export class UserAdminController {
     @patchProductADM
   */
   async patchProductADM(req: Request, res: Response) {
-    const _uid = req.params.id;
+    const _id = req.params._id;
     const available = req.body.available;
 
     const ProductADM: IProductADMRepository = new UserADMRepository();
     const ProductADMUseCase = new PatchProductADMUseCase(ProductADM);
     try {
-      const allProducts = await ProductADMUseCase.execute(_uid, available);
+      const allProducts = await ProductADMUseCase.execute(_id, available);
       return res.status(200).json(allProducts);
     } catch (error) {
       console.error("Error getAllProducts:", error);
