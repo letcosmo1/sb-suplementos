@@ -13,4 +13,12 @@ routerAdmin.get(
   }
 );
 
+routerAdmin.patch(
+  "/admin/patch/:_uid",
+  VerifyUserMiddleware,
+  async (req: Request, res: Response) => {
+    await ProductADMController.patchProductADM(req, res);
+  }
+);
+
 export default routerAdmin;
