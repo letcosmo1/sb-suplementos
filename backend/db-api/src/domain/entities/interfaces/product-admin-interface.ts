@@ -1,5 +1,12 @@
 import { Document } from "mongoose";
-import { _id, category, limit, page, title } from "../../types/product-types";
+import {
+  _id,
+  available,
+  category,
+  limit,
+  page,
+  title,
+} from "../../types/product-types";
 
 export interface IProduct extends Document {
   productImage: string;
@@ -15,4 +22,5 @@ export interface IProduct extends Document {
 
 export interface IProductADMRepository {
   getAllProductsADM(): Promise<IProduct[] | null>;
+  patchProductADM(_uid: _id, available: available): Promise<IProduct | null>;
 }

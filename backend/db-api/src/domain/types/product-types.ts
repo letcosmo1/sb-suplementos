@@ -3,3 +3,4 @@ export type _id = any;
 export type page = number
 export type limit = number
 export type category = string
+export type available = boolean
