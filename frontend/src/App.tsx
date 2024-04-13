@@ -25,8 +25,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/admin/login" element={<PaginaLoginAdm setIsLoggedIn={ setIsLoggedIn } />} />
-        <Route path="/produtos" element={<PaginaProdutos />}/>
-        <Route path="/produto/:id" element={<PaginaDetalhes />} />
+        <Route path="/produtos" element={<PaginaProdutos isLoggedIn={ isLoggedIn } />}/>
+        <Route path="/produto/:id" element={<PaginaDetalhes isLoggedIn={ isLoggedIn } />} />
       </Routes>
       <Footer />
     </BrowserRouter>

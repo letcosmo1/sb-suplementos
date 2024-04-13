@@ -7,7 +7,8 @@ export type TypeProduct = {
     description: string,
     flavor: string,
     weight: string,
-    table: string
+    table: string,
+    available: boolean
 }
 export type TypeCategorySlider = {
     name: string,

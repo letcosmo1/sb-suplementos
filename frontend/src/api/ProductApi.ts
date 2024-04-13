@@ -11,6 +11,14 @@ export const getHighlightCategories = () => {
     .then((res) => res.json())
     .then((data: TypeHighlightCategory[]) => data)
 }
+export const getAllProductsAdm = (token: string) => {
+  return fetch(`${api_url}/admin`, {
+    method: "GET",
+    headers: { "authorization": `Bearer ${token}` }
+  })
+    .then((res) => res.json())
+    .then((data: TypeProduct[]) => data)
+}
 export const getAllProducts = (order: string) => {
   return fetch(`${api_url}/products/${order}`)
     .then((res) => res.json())
@@ -41,7 +49,7 @@ export const sendProductForSale = (product: TypeSaleProduct) => {
   return fetch(`${api_url}/sale`, {
           method: "POST",
           body: JSON.stringify({ product: product }),
-          headers: { "Content-type": "application/json" },
+          headers: { "Content-type": "application/json" }
         })
         .then((res) => res.json())
         .then((data) => {

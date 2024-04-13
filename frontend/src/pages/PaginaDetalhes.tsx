@@ -8,7 +8,11 @@ import { useEffect, useState } from 'react';
 import { getProductById, sendProductForSale } from '../api/ProductApi';
 import { capitalizeFirstLetter, toReais } from '../utils/StringFormat';
 
-const PaginaDetalhes = () => {
+type PropTypes = {
+    isLoggedIn: boolean
+}
+
+const PaginaDetalhes = ({ isLoggedIn }:PropTypes) => {
     const { id } = useParams()
 
     const [product, setProduct] = useState<TypeProduct>({
@@ -20,7 +24,8 @@ const PaginaDetalhes = () => {
         description: "",
         flavor: "",
         weight: "",
-        table: ""
+        table: "",
+        available: true
     })
 
     const [saleProduct, setSaleProduct] = useState<TypeSaleProduct>({
@@ -60,13 +65,13 @@ const PaginaDetalhes = () => {
                 { ">" }
                 <Link to={"/produtos"}>Produtos</Link>
                 { ">" }
-                {<Link to={`/produtos/${product.category}`}>{ product.category }</Link> }
+                {<Link to={`/produtos?categoria=${product.category}`}>{ product.category }</Link> }
                 { ">" }
                 <Link to={`/produto/${id}`}>{ capitalizeFirstLetter(product.name)  }</Link>
             </nav>
 
             <div className="detalhes-container">
-                <section className="produto-imagens"> 
+                <section className="produto-imagens">  
                     <div className="img-nav">
                         <div onClick={ () => toggleImage(product.image) }>
                             <img src={ getImage(product.image) } />
@@ -98,12 +103,19 @@ const PaginaDetalhes = () => {
                     </div>
                     }
                 </section>
-
-                <section className="produto-preco">
-                    <h3>Preço</h3>
-                    <p>{ toReais(product.price) }</p>
-                    <button onClick={ whatsappRedirect }><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
-                </section>
+                <div className="produto-compras">
+                    <section className="produto-disponivel">
+                        <h3>{ product.available ? "Em estoque" : "Indisponível" }</h3>   
+                        { isLoggedIn &&
+                        <input type="checkbox" checked={ product.available } />
+                        }   
+                    </section>
+                    <section className="produto-preco">
+                        <h3>Preço</h3>
+                        <p>{ toReais(product.price) }</p>
+                        <button onClick={ whatsappRedirect }><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
+                    </section>
+                </div>
             </div>
             
             <section className="produto-descricao">
