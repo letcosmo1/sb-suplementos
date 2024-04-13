@@ -1,5 +1,6 @@
 .pagina-detalhes {
     margin: 0 32px;
+    min-height: var(--view-height);
 }
 .detalhes-breadcrumbs {
     display: flex;

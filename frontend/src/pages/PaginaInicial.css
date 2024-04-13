@@ -1,15 +1,16 @@
-.banner {
-    width: 100%;
-    height: 370px;
+.banner-carousel {
     margin-bottom: 32px;
-    background-color: var(--dark-blue);
 }
-.carousel-container {
+.banner-carousel img {
+    width: 100%;
+    height: 470px;
+}
+.categories-carousel-container {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
 }
-.carousel {
+.categories-carousel {
     width: 1099px;
 }

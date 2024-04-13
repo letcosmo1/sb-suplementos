@@ -23,7 +23,6 @@ footer {
 }
 .footer-admin {
     display: flex;
-    align-items: flex-end;
     margin-left: 128px;
 }
 .footer-admin a {

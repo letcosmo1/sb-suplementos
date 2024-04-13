@@ -1,4 +1,5 @@
 .pagina-produtos {
+    min-height: var(--view-height);
     margin: 0 32px;
 }
 .produtos-breadcrumbs {

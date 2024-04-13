@@ -6,9 +6,16 @@ import { useEffect, useState } from 'react'
 import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getHighlightCategories } from '../api/ProductsApi'
+import { getImageUrl } from '../utils/ImageUrl'
 
 const PaginaInicial = () => {
-  const carousel_responsive = {
+  const banner_carousel_responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1
+    }
+  }
+  const categories_carousel_responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 7
@@ -33,24 +40,24 @@ const PaginaInicial = () => {
       icon: "categories-slider-barradeproteina.png"
     },
     {
-      name: "Joelheira",
-      icon: "categories-slider-caneleira.png"
+      name: "Hipercalórico",
+      icon: "categories-slider-hipercalorico.png"
     },
     {
-      name: "Tornoseleira",
-      icon: "categories-slider-caneleira.png"
+      name: "Albumina",
+      icon: "categories-slider-albumina.png"
     },
     {
       name: "Coqueteleira",
       icon: "categories-slider-coqueteleira.png"
     },
     {
-      name: "Hipercalórico",
-      icon: "categories-slider-hipercalorico.png"
+      name: "Joelheira",
+      icon: "categories-slider-caneleira.png"
     },
     {
-      name: "Albumina",
-      icon: "categories-slider-hipercalorico.png"
+      name: "Tornozeleira",
+      icon: "categories-slider-tornozeleira.png"
     },
     {
       name: "Ômega 3",
@@ -58,7 +65,7 @@ const PaginaInicial = () => {
     },
     {
       name: "Thermo Flame",
-      icon: "categories-slider-omega3.png"
+      icon: "categories-slider-thermo-flame.png"
     }
   ])
 
@@ -70,11 +77,20 @@ const PaginaInicial = () => {
   }, []);
 
   return (
-    <main>
-      <section className="banner"></section>
+      <main>
+        <Carousel 
+          containerClass="banner-carousel" 
+          responsive={ banner_carousel_responsive } 
+          infinite={ true } 
+          autoPlay={ true } 
+          autoPlaySpeed={ 5000 }
+        >
+          <img src={ getImageUrl("banner1.jpg") } alt="banner" />
+          <img src={ getImageUrl("banner.png") } alt="banner" />
+        </Carousel>
 
-        <div className="carousel-container">
-          <Carousel containerClass="carousel" responsive={ carousel_responsive } infinite={ true }>
+        <div className="categories-carousel-container">
+          <Carousel containerClass="categories-carousel" responsive={ categories_carousel_responsive } infinite={ true }>
             { categoriesSlider.map((category_slider) => { 
               return <CategoriaCard 
                         key={ category_slider.name } 

@@ -15,13 +15,13 @@ const Footer = () => {
                 <section className="footer-info">
                     <div>
                         <h2>Atendimento</h2>
-                        <p>Segunda a sexta das 7h às 17h</p>
-                        <p>E sábados das 7h às 12h</p>
+                        <p>Segunda a sexta das 09:00 às 17:00</p>
+                        <p></p>
                     </div>
                     <address>
                         <h2>Endereço</h2>
-                        <p>Avenida Paulista, 999, Loja 12,</p>
-                        <p>Bela Vista, São Paulo, SP, 01311-000</p>
+                        <p>Rua Ayres Belo, nº 15</p>
+                        <p>Centro, Barreiros/PE - 55560-000</p>
                     </address>
                     <div className="footer-admin">
                         <Link to={"/admin/login"}>Admin</Link>
@@ -30,9 +30,9 @@ const Footer = () => {
             </div>
             
             <address className="footer-links">
-                <Link to={"/"}><FontAwesomeIcon icon={ faEnvelope } />email@email.com</Link>
-                <Link to={"/"}><FontAwesomeIcon icon={ faInstagram } />@instagram</Link>
-                <Link to={"/"}><FontAwesomeIcon icon={ faWhatsapp } />+99 (99) 99999-9999</Link>
+                <a href="mailto:adautomelo@outlook.com" target="_blank"><FontAwesomeIcon icon={ faEnvelope } />adautomelo@outlook.com</a>
+                <a href="https://www.instagram.com/sb__suplementos/" target="_blank"><FontAwesomeIcon icon={ faInstagram } />@sb__suplementos</a>
+                <a href="https://wa.me/+5581988540511" target="_blank"><FontAwesomeIcon icon={ faWhatsapp } />+55 (81) 98854-0511</a>
             </address>
         </footer>
     )
