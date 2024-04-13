@@ -9,7 +9,7 @@ routerAdmin.get(
   "/admin/",
   VerifyUserMiddleware,
   async (req: Request, res: Response) => {
-    await ProductADMController.getAllProductsADM(req, res);
+    await ProductADMController.getAllProductsADM(req, res); 
   }
 );
 

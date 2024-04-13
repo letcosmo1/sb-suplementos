@@ -5,7 +5,12 @@ import { Link, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import { BaseSyntheticEvent, useState } from 'react'
 
-const Header = ({ isLoggedIn, setIsLoggedIn }: any) => {
+type PropTypes = {
+  isLoggedIn: boolean,
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header = ({ isLoggedIn, setIsLoggedIn }: PropTypes) => {
     const location = useLocation()
 
     const [pesquisa, setPesquisa] = useState<string>("")

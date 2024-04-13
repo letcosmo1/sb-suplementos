@@ -5,10 +5,14 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { TypeProduct, TypeSaleProduct } from '../utils/Types';
 import { getImage } from '../utils/ImageUrl';
 import { useEffect, useState } from 'react';
-import { getProductById, sendProductForSale } from '../api/ProductApi';
+import { getProductById, sendProductForSale, updateProductAvailableAdm } from '../api/ProductsApi';
 import { capitalizeFirstLetter, toReais } from '../utils/StringFormat';
 
-const PaginaDetalhes = () => {
+type PropTypes = {
+    isLoggedIn: boolean
+}
+
+const PaginaDetalhes = ({ isLoggedIn }:PropTypes) => {
     const { id } = useParams()
 
     const [product, setProduct] = useState<TypeProduct>({
@@ -20,36 +24,47 @@ const PaginaDetalhes = () => {
         description: "",
         flavor: "",
         weight: "",
-        table: ""
-    })
-
-    const [saleProduct, setSaleProduct] = useState<TypeSaleProduct>({
-        name: "",
-        price: 0,
-        flavor: ""
+        table: "",
+        available: true
     })
 
     const [selectedImage, setSelectedImage] = useState<string>("")
+
+    const [available, setAvailable] = useState<boolean>(true)
 
     const toggleImage = (imagem_url: string) => {
         setSelectedImage(imagem_url)
     }
 
     const whatsappRedirect = () => {
-        sendProductForSale(saleProduct)
+        const sale_product: TypeSaleProduct = {
+            name: product.name,
+            price: product.price,
+            flavor: product.flavor
+        }
+
+        sendProductForSale(sale_product)
             .then(data => window.open(data, '_blank'))
+    }
+
+    const handleAvailableChange = () => {
+        const token: string | null = localStorage.getItem("token")
+
+        if(isLoggedIn && token) {
+            updateProductAvailableAdm(token, product._id, !available)
+            let updated_product: TypeProduct = product
+            updated_product.available = !available
+            setProduct(updated_product)
+            setAvailable(!available)
+        }
     }
     
     useEffect(() => {
         getProductById(id)
             .then(data => {
                 setProduct(data)
+                setAvailable(data.available)
                 setSelectedImage(data.image)
-                setSaleProduct({
-                    name: data.name,
-                    price: data.price,
-                    flavor: data.flavor
-                })
             })
     }, []);
 
@@ -60,13 +75,13 @@ const PaginaDetalhes = () => {
                 { ">" }
                 <Link to={"/produtos"}>Produtos</Link>
                 { ">" }
-                {<Link to={`/produtos/${product.category}`}>{ product.category }</Link> }
+                {<Link to={`/produtos?categoria=${product.category}`}>{ product.category }</Link> }
                 { ">" }
                 <Link to={`/produto/${id}`}>{ capitalizeFirstLetter(product.name)  }</Link>
             </nav>
 
             <div className="detalhes-container">
-                <section className="produto-imagens"> 
+                <section className="produto-imagens">  
                     <div className="img-nav">
                         <div onClick={ () => toggleImage(product.image) }>
                             <img src={ getImage(product.image) } />
@@ -98,12 +113,19 @@ const PaginaDetalhes = () => {
                     </div>
                     }
                 </section>
-
-                <section className="produto-preco">
-                    <h3>Preço</h3>
-                    <p>{ toReais(product.price) }</p>
-                    <button onClick={ whatsappRedirect }><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
-                </section>
+                <div className="produto-compras">
+                    <section className="produto-disponivel">
+                        <h3>{ product.available ? "Em estoque" : "Indisponível" }</h3>   
+                        { isLoggedIn &&
+                        <input type="checkbox" checked={ available } onChange={ handleAvailableChange } />
+                        }   
+                    </section>
+                    <section className="produto-preco">
+                        <h3>Preço</h3>
+                        <p>{ toReais(product.price) }</p>
+                        <button onClick={ whatsappRedirect }><FontAwesomeIcon icon={faWhatsapp} />COMPRE AGORA</button>
+                    </section>
+                </div>
             </div>
             
             <section className="produto-descricao">

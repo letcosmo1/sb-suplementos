@@ -4,7 +4,11 @@ import './PaginaLoginAdm.css'
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../api/LoginApi';
 
-const PaginaLogin = ({ setIsLoggedIn }: any) => {
+type PropTypes = {
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+
+const PaginaLogin = ({ setIsLoggedIn }: PropTypes) => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState<string>("")

@@ -3,9 +3,13 @@ import { Link, useLocation } from 'react-router-dom'
 import ProdutoCard from '../components/ProdutoCard'
 import { BaseSyntheticEvent, useEffect, useState } from 'react'
 import { TypeProduct } from '../utils/Types'
-import { getAllProducts, getProductsByCategory, getProductsByName } from '../api/ProductApi'
+import { getAllProducts, getAllProductsAdm, getProductsByCategory, getProductsByName } from '../api/ProductsApi'
 
-const PaginaProdutos = () => {
+type PropTypes = {
+    isLoggedIn: boolean
+}
+
+const PaginaProdutos = ({ isLoggedIn }:PropTypes) => {
     const select: HTMLSelectElement | null = document.querySelector("#select-ordenacao")
 
     const location = useLocation();
@@ -17,7 +21,7 @@ const PaginaProdutos = () => {
         if(select) select.value = "asc"
 
         loadProducts()
-    }, [categoria, pesquisa]);
+    }, [categoria, pesquisa, isLoggedIn]);
 
     const [titulo, setTitulo] = useState<string>("")
     const [products, setProducts] = useState<TypeProduct[]>([])
@@ -35,22 +39,28 @@ const PaginaProdutos = () => {
     }
 
     const loadProducts = () => {
+        const token = localStorage.getItem("token")
+
+        if(isLoggedIn && token) {
+            setTitulo("TODOS OS PRODUTOS")
+            getAllProductsAdm(token)
+                .then(data => setProducts(data))
+            return
+        }
         if(categoria) {
             setTitulo(categoria)
-
             getProductsByCategory("asc", categoria)
                 .then(data => setProducts(data))
             return
         }
         if(pesquisa) {
             setTitulo(`Resultado da pesquisa '${pesquisa}'`)
-
             getProductsByName(pesquisa)
                 .then(data => setProducts(data))
             return
         }
-        setTitulo("TODOS OS PRODUTOS")
 
+        setTitulo("TODOS OS PRODUTOS")
         getAllProducts("asc")
                 .then(data => setProducts(data))
         return 
@@ -73,7 +83,7 @@ const PaginaProdutos = () => {
                 
                 <section className="produtos">
                     <div className="ordenacao-container">
-                        { !pesquisa &&
+                        { !pesquisa || !isLoggedIn &&
                         <div>
                             <label htmlFor="order">Ordenação: </label>
                             <select id="select-ordenacao" name="order" onChange={ handleOrdenacaoChange }>
