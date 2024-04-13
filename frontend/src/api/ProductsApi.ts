@@ -48,8 +48,8 @@ export const getProductsByCategory = (order: string, category: string) => {
 export const sendProductForSale = (product: TypeSaleProduct) => {
   return fetch(`${api_url}/sale`, {
           method: "POST",
-          body: JSON.stringify({ product: product }),
-          headers: { "Content-type": "application/json" }
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ product: product })
         })
         .then((res) => res.json())
         .then((data) => {
@@ -57,4 +57,13 @@ export const sendProductForSale = (product: TypeSaleProduct) => {
           if(data.url) url = data.url
           return url
         })
+}
+export const updateProductAvailableAdm = (token: string, _id: string, available: boolean) => {
+  return fetch(`${api_url}/admin/patch/${_id}`, {
+    method: "PATCH",
+    headers: { "authorization": `Bearer ${token}` },
+    body: JSON.stringify({ available: available })
+  })
+    .then((res) => res.json())
+    .then(console.log)
 }

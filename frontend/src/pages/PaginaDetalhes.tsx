@@ -5,7 +5,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { TypeProduct, TypeSaleProduct } from '../utils/Types';
 import { getImage } from '../utils/ImageUrl';
 import { useEffect, useState } from 'react';
-import { getProductById, sendProductForSale } from '../api/ProductApi';
+import { getProductById, sendProductForSale, updateProductAvailableAdm } from '../api/ProductsApi';
 import { capitalizeFirstLetter, toReais } from '../utils/StringFormat';
 
 type PropTypes = {
@@ -28,33 +28,43 @@ const PaginaDetalhes = ({ isLoggedIn }:PropTypes) => {
         available: true
     })
 
-    const [saleProduct, setSaleProduct] = useState<TypeSaleProduct>({
-        name: "",
-        price: 0,
-        flavor: ""
-    })
-
     const [selectedImage, setSelectedImage] = useState<string>("")
+
+    const [available, setAvailable] = useState<boolean>(true)
 
     const toggleImage = (imagem_url: string) => {
         setSelectedImage(imagem_url)
     }
 
     const whatsappRedirect = () => {
-        sendProductForSale(saleProduct)
+        const sale_product: TypeSaleProduct = {
+            name: product.name,
+            price: product.price,
+            flavor: product.flavor
+        }
+
+        sendProductForSale(sale_product)
             .then(data => window.open(data, '_blank'))
+    }
+
+    const handleAvailableChange = () => {
+        const token: string | null = localStorage.getItem("token")
+
+        if(isLoggedIn && token) {
+            updateProductAvailableAdm(token, product._id, !available)
+            let updated_product: TypeProduct = product
+            updated_product.available = !available
+            setProduct(updated_product)
+            setAvailable(!available)
+        }
     }
     
     useEffect(() => {
         getProductById(id)
             .then(data => {
                 setProduct(data)
+                setAvailable(data.available)
                 setSelectedImage(data.image)
-                setSaleProduct({
-                    name: data.name,
-                    price: data.price,
-                    flavor: data.flavor
-                })
             })
     }, []);
 
@@ -107,7 +117,7 @@ const PaginaDetalhes = ({ isLoggedIn }:PropTypes) => {
                     <section className="produto-disponivel">
                         <h3>{ product.available ? "Em estoque" : "Indisponível" }</h3>   
                         { isLoggedIn &&
-                        <input type="checkbox" checked={ product.available } />
+                        <input type="checkbox" checked={ available } onChange={ handleAvailableChange } />
                         }   
                     </section>
                     <section className="produto-preco">

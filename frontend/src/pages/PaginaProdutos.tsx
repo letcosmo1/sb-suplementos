@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import ProdutoCard from '../components/ProdutoCard'
 import { BaseSyntheticEvent, useEffect, useState } from 'react'
 import { TypeProduct } from '../utils/Types'
-import { getAllProducts, getAllProductsAdm, getProductsByCategory, getProductsByName } from '../api/ProductApi'
+import { getAllProducts, getAllProductsAdm, getProductsByCategory, getProductsByName } from '../api/ProductsApi'
 
 type PropTypes = {
     isLoggedIn: boolean

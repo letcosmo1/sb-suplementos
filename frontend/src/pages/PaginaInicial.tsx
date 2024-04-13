@@ -5,7 +5,7 @@ import Carousel from 'react-multi-carousel'
 import { useEffect, useState } from 'react'
 import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
-import { getHighlightCategories } from '../api/ProductApi'
+import { getHighlightCategories } from '../api/ProductsApi'
 
 const PaginaInicial = () => {
   const carousel_responsive = {
