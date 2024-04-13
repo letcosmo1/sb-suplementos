@@ -6,7 +6,7 @@ const routerAdmin = Router();
 const ProductADMController = new UserAdminController();
 
 routerAdmin.get(
-  "/admin/",
+  "/produtos",
   VerifyUserMiddleware,
   async (req: Request, res: Response) => {
     await ProductADMController.getAllProductsADM(req, res); 
@@ -14,7 +14,7 @@ routerAdmin.get(
 );
 
 routerAdmin.patch(
-  "/admin/patch/:_uid",
+  "/patch/:_uid",
   VerifyUserMiddleware,
   async (req: Request, res: Response) => {
     await ProductADMController.patchProductADM(req, res);
