@@ -1,13 +1,17 @@
 import './Nav.css'
 import { Link, useLocation } from 'react-router-dom'
 
-const Nav = () => {
+type PropTypes = {
+    isLoggedIn: boolean,
+}
+
+const Nav = ({ isLoggedIn }: PropTypes) => {
     const location = useLocation();
 
     return (
         
         <nav className="barra-navegacao">
-            {location.pathname !== "/login" && 
+            {location.pathname !== "/login" || !isLoggedIn && 
             <ul>
                 <li><Link to={"/produtos"}>Todos os produtos</Link></li>
                 <li><Link to={"/produtos?categoria=Whey"}>Whey</Link></li>

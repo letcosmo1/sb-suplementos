@@ -21,7 +21,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header isLoggedIn={ isLoggedIn } setIsLoggedIn={ setIsLoggedIn } />
-      <Nav />
+      <Nav isLoggedIn={ isLoggedIn } />
       <Routes>
         <Route path="/" element={<PaginaInicial />} />
         <Route path="/admin/login" element={<PaginaLoginAdm setIsLoggedIn={ setIsLoggedIn } />} />
