@@ -20,6 +20,11 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
                 <li><Link to={"/produtos?categoria=Hipercalórico"}>Hipercalórico</Link></li>
             </ul>
             }
+            {isLoggedIn &&
+            <ul style={{ justifyContent: "center" }}>
+                <li><Link to={"/produtos"}>Todos os produtos</Link></li>
+            </ul>
+            }
         </nav>
     )
   }
