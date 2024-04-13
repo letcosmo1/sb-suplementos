@@ -7,13 +7,16 @@ import {
   IProductByNameDesc,
   IProductByPriceAsc,
   IProductByPriceDesc,
+  IProductByTitleAsc,
+  IProductByTitleDesc,
+  IProductByTitlePriceAsc,
+  IProductByTitlePriceDesc,
   IProductRepository,
 } from "@interfaces/product-interface";
 import { _id, category, limit, page, title } from "@type//product-types";
 
 export class GetAllProductsUseCase {
   private productRepository: IProductRepository;
-
   constructor(productRepository: IProductRepository) {
     this.productRepository = productRepository;
   }
@@ -31,6 +34,50 @@ export class GetProductByNameUseCase {
 
   async execute(title: title): Promise<IProduct[] | null> {
     return await this.productRepository.getProductByName(title);
+  }
+}
+
+export class GetProductByTitleAscUseCase {
+  private productRepository: IProductByTitleAsc;
+  constructor(productRepository: IProductByTitleAsc) {
+    this.productRepository = productRepository;
+  }
+
+  async execute(title: title): Promise<IProduct[] | null> {
+    return await this.productRepository.getProductByTitleAsc(title);
+  }
+}
+
+export class GetProductByTitleDescUseCase {
+  private productRepository: IProductByTitleDesc;
+  constructor(productRepository: IProductByTitleDesc) {
+    this.productRepository = productRepository;
+  }
+
+  async execute(title: title): Promise<IProduct[] | null> {
+    return await this.productRepository.getProductByTitleDesc(title);
+  }
+}
+
+export class GetProductByTitlePriceAscUseCase {
+  private productRepository: IProductByTitlePriceAsc;
+  constructor(productRepository: IProductByTitlePriceAsc) {
+    this.productRepository = productRepository;
+  }
+
+  async execute(title: title): Promise<IProduct[] | null> {
+    return await this.productRepository.getProductByTitlePriceAsc(title);
+  }
+}
+
+export class GetProductByTitlePriceDescUseCase {
+  private productRepository: IProductByTitlePriceDesc;
+  constructor(productRepository: IProductByTitlePriceDesc) {
+    this.productRepository = productRepository;
+  }
+
+  async execute(title: title): Promise<IProduct[] | null> {
+    return await this.productRepository.getProductByTitlePriceDesc(title);
   }
 }
 
@@ -127,7 +174,6 @@ export class GetProductByCategoryPriceAscUseCase {
     return await this.productRepository.getProductByCategoryPriceAsc(category);
   }
 }
-
 
 export class GetProductByCategoryPriceUseCase {
   private productRepository: IProductByCategory;

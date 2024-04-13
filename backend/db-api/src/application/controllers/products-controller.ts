@@ -14,6 +14,10 @@ import {
   GetProductByNameUseCase,
   GetProductByPriceAscUseCase,
   GetProductByPriceDescUseCase,
+  GetProductByTitleAscUseCase,
+  GetProductByTitleDescUseCase,
+  GetProductByTitlePriceAscUseCase,
+  GetProductByTitlePriceDescUseCase,
 } from "@usecases/products-usecase";
 import {
   IProductByCategory,
@@ -23,6 +27,10 @@ import {
   IProductByNameDesc,
   IProductByPriceAsc,
   IProductByPriceDesc,
+  IProductByTitleAsc,
+  IProductByTitleDesc,
+  IProductByTitlePriceAsc,
+  IProductByTitlePriceDesc,
   IProductRepository,
 } from "@interfaces/product-interface";
 import { ProductValidatorService } from "@services/product-validator-service";
@@ -67,6 +75,111 @@ export class ProductsController {
 
     const ProductRepository: IProductByName = new ProductsRepository();
     const ProductUseCase = new GetProductByNameUseCase(ProductRepository);
+    try {
+      const product = await ProductUseCase.execute(title);
+      return res.status(200).json(product);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res
+        .status(Errors.INTERNAL_SERVER_ERROR.code)
+        .json(Errors.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  /*
+    @getProductByTitleAsc
+  */
+  async getProductByTitleAsc(req: Request, res: Response) {
+    const title = req.params.title;
+
+    if (!(await this.productService.validProductName(title))) {
+      return res
+        .status(Errors.PRODUCT_NOT_FOUND.code)
+        .json(Errors.PRODUCT_NOT_FOUND);
+    }
+
+    const ProductRepository: IProductByTitleAsc = new ProductsRepository();
+    const ProductUseCase = new GetProductByTitleAscUseCase(ProductRepository);
+    try {
+      const product = await ProductUseCase.execute(title);
+      return res.status(200).json(product);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res
+        .status(Errors.INTERNAL_SERVER_ERROR.code)
+        .json(Errors.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  /*
+    @getProductByTitleDesc
+  */
+  async getProductByTitleDesc(req: Request, res: Response) {
+    const title = req.params.title;
+
+    if (!(await this.productService.validProductName(title))) {
+      return res
+        .status(Errors.PRODUCT_NOT_FOUND.code)
+        .json(Errors.PRODUCT_NOT_FOUND);
+    }
+
+    const ProductRepository: IProductByTitleDesc = new ProductsRepository();
+    const ProductUseCase = new GetProductByTitleDescUseCase(ProductRepository);
+    try {
+      const product = await ProductUseCase.execute(title);
+      return res.status(200).json(product);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res
+        .status(Errors.INTERNAL_SERVER_ERROR.code)
+        .json(Errors.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  /*
+    @getProductByTitlePriceAsc
+  */
+  async getProductByTitlePriceAsc(req: Request, res: Response) {
+    const title = req.params.title;
+
+    if (!(await this.productService.validProductName(title))) {
+      return res
+        .status(Errors.PRODUCT_NOT_FOUND.code)
+        .json(Errors.PRODUCT_NOT_FOUND);
+    }
+
+    const ProductRepository: IProductByTitlePriceAsc = new ProductsRepository();
+    const ProductUseCase = new GetProductByTitlePriceAscUseCase(
+      ProductRepository
+    );
+    try {
+      const product = await ProductUseCase.execute(title);
+      return res.status(200).json(product);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res
+        .status(Errors.INTERNAL_SERVER_ERROR.code)
+        .json(Errors.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  /*
+    @getProductByTitlePriceDesc
+  */
+  async getProductByTitlePriceDesc(req: Request, res: Response) {
+    const title = req.params.title;
+
+    if (!(await this.productService.validProductName(title))) {
+      return res
+        .status(Errors.PRODUCT_NOT_FOUND.code)
+        .json(Errors.PRODUCT_NOT_FOUND);
+    }
+
+    const ProductRepository: IProductByTitlePriceDesc =
+      new ProductsRepository();
+    const ProductUseCase = new GetProductByTitlePriceDescUseCase(
+      ProductRepository
+    );
     try {
       const product = await ProductUseCase.execute(title);
       return res.status(200).json(product);

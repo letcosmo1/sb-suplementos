@@ -19,6 +19,24 @@ router.get("/products/price/asc", async (req: Request, res: Response) => {
 router.get("/products/price/desc", async (req: Request, res: Response) => {
   await productsController.getProductByPriceDesc(req, res);
 });
+router.get("/products/:title/asc", async (req: Request, res: Response) => {
+  await productsController.getProductByTitleAsc(req, res);
+});
+router.get("/products/:title/desc", async (req: Request, res: Response) => {
+  await productsController.getProductByTitleDesc(req, res);
+});
+router.get(
+  "/products/:title/price/asc",
+  async (req: Request, res: Response) => {
+    await productsController.getProductByTitlePriceAsc(req, res);
+  }
+);
+router.get(
+  "/products/:title/price/desc",
+  async (req: Request, res: Response) => {
+    await productsController.getProductByTitlePriceDesc(req, res);
+  }
+);
 router.get("/products/:title", async (req: Request, res: Response) => {
   await productsController.getProductByName(req, res);
 });
