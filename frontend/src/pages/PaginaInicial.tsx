@@ -52,12 +52,8 @@ const PaginaInicial = () => {
       icon: "categories-slider-coqueteleira.png"
     },
     {
-      name: "Joelheira",
-      icon: "categories-slider-caneleira.png"
-    },
-    {
-      name: "Tornozeleira",
-      icon: "categories-slider-tornozeleira.png"
+      name: "Chocolate Fit",
+      icon: "categories-slider-chocolatefit.png"
     },
     {
       name: "Ômega 3",
@@ -66,7 +62,19 @@ const PaginaInicial = () => {
     {
       name: "Thermo Flame",
       icon: "categories-slider-thermo-flame.png"
-    }
+    },
+    {
+      name: "Luva",
+      icon: "categories-slider-luva.png"
+    },
+    {
+      name: "Joelheira",
+      icon: "categories-slider-caneleira.png"
+    },
+    {
+      name: "Tornozeleira",
+      icon: "categories-slider-tornozeleira.png"
+    },
   ])
 
   const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>([])

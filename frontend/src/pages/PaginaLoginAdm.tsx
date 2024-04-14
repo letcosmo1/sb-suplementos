@@ -37,7 +37,7 @@ const PaginaLogin = ({ setIsLoggedIn }: PropTypes) => {
     }
 
     return (
-        <main className="login">
+        <main className="pagina-login">
             <form className="login-container">
                 <Logo />
                 <div>

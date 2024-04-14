@@ -1,8 +1,9 @@
-.login {
+.pagina-login {
     display: flex;
     flex-direction: column;
+    height: var(--view-height);
+    justify-content: center;
     align-items: center;
-    margin: 32px 0;
 }
 .login-container {
     width: calc(380px - 48px);

@@ -38,6 +38,15 @@ const PaginaProdutos = ({ isLoggedIn }:PropTypes) => {
         }
     }
 
+    const renderOrdernacao = () => {
+        if(isLoggedIn) {
+            return false
+        } else {
+            if(pesquisa) return false
+        }
+        return true
+    }
+
     const loadProducts = () => {
         const token = localStorage.getItem("token")
 
@@ -83,7 +92,7 @@ const PaginaProdutos = ({ isLoggedIn }:PropTypes) => {
                 
                 <section className="produtos">
                     <div className="ordenacao-container">
-                        { !pesquisa || !isLoggedIn &&
+                        { renderOrdernacao() &&
                         <div>
                             <label htmlFor="order">Ordenação: </label>
                             <select id="select-ordenacao" name="order" onChange={ handleOrdenacaoChange }>
