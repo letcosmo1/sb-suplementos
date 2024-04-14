@@ -6,10 +6,16 @@
     align-items: center;
 }
 .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: calc(380px - 48px);
     background-color: var(--dark-blue);
     border-radius: 5px;
     padding: 24px;
+}
+.login-container img {
+    margin-bottom: 24px;
 }
 .login-container h2 {
     margin-bottom: 32px;
