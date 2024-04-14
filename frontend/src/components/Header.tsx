@@ -27,7 +27,11 @@ const Header = ({ isLoggedIn, setIsLoggedIn }: PropTypes) => {
 
     return (
       <header>
-        <Link to={"/"} className="header-logo"><Logo /></Link>
+        <Link to={"/"} className="header-logo">
+          <h1>
+            <Logo />
+          </h1>
+        </Link>
         
         {location.pathname !== "/login" && 
         <form>

@@ -1,9 +1,10 @@
+import { getImageUrl } from '../utils/ImageUrl'
 import './Logo.css'
 
 const Logo = () => {
 
     return (
-        <h2 className="logo">SB<span>SUPLEMENTOS</span></h2>
+        <img className="logo" src={ getImageUrl("logo.png") } alt="" />
     )
   }
   
