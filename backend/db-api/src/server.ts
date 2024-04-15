@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+console.log("Hello, World!")
+
 import connectToMongoDB from "@mongoose/mongoose";
 connectToMongoDB();
 
