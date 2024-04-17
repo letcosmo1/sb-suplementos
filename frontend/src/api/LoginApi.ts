@@ -1,4 +1,4 @@
-const api_url: string = "http://localhost:3001"
+const api_url: string = "https://main--rococo-druid-6fe908.netlify.app"
 
 export const signIn = (email: string, password: string) => {
     return fetch(`${api_url}/user/signin`, {
