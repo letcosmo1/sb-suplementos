@@ -22,9 +22,6 @@ const Footer = () => {
                         <p>Rua Ayres Belo, nº 15</p>
                         <p>Centro, Barreiros/PE - 55560-000</p>
                     </address>
-                    <div className="footer-admin">
-                        <Link to={"/admin/login"}>Admin</Link>
-                    </div>
                 </section>
             </div>
             
