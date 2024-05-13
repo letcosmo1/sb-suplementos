@@ -11,6 +11,7 @@ import {
   updateProductAvailableAdm,
 } from "../api/ProductsApi";
 import { capitalizeFirstLetter, toReais } from "../utils/StringFormat";
+import ClipLoader from "react-spinners/ClipLoader";
 
 type PropTypes = {
   isLoggedIn: boolean;
@@ -36,6 +37,19 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
 
   const [available, setAvailable] = useState<boolean>(true);
 
+  const [loading, setLoading] = useState(true);
+
+  const centerLoader = () => {
+    if(loading) {
+      return {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }
+    }
+    return {}
+  }
+
   const toggleImage = (imagem_url: string) => {
     setSelectedImage(imagem_url);
   };
@@ -56,7 +70,6 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
     const token: string | null = localStorage.getItem("token");
 
     if (isLoggedIn && token) {
-        console.log(product._id)
       updateProductAvailableAdm(token, product._id, !available);
       let updated_product: TypeProduct = product;
       updated_product.available = !available;
@@ -67,6 +80,7 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
 
   useEffect(() => {
     getProductById(id).then((data) => {
+      setLoading(false);
       setProduct(data);
       setAvailable(data.available);
       setSelectedImage(data.image);
@@ -74,7 +88,18 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
   }, []);
 
   return (
-    <main className="pagina-detalhes">
+    <main className="pagina-detalhes" style={ centerLoader() }>
+      { loading &&
+      <ClipLoader
+        color={ "var(--blue)" }
+        loading={ loading }
+        size={ 70 } 
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+      }
+      { !loading &&
+      <div>
       <nav className="detalhes-breadcrumbs">
         <Link to={"/"}>Página Inicial</Link>
         {">"}
@@ -146,10 +171,12 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
 
       <section className="produto-descricao">
         {/*
-                <h2>Descrição</h2>
-                <p>{ product.description }</p>
-                */}
+        <h2>Descrição</h2>
+        <p>{ product.description }</p>
+        */}
       </section>
+      </div>
+      }
     </main>
   );
 };
