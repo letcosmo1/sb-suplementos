@@ -9,6 +9,7 @@ import {
   getProductsByCategory,
   getProductsByName,
 } from "../api/ProductsApi";
+import { products_placeholder } from "../utils/Placeholders";
 
 type PropTypes = {
   isLoggedIn: boolean;
@@ -30,7 +31,7 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   }, [categoria, pesquisa, isLoggedIn]);
 
   const [titulo, setTitulo] = useState<string>("");
-  const [products, setProducts] = useState<TypeProduct[]>([]);
+  const [products, setProducts] = useState<TypeProduct[]>(products_placeholder)
 
   const handleOrdenacaoChange = (e: BaseSyntheticEvent) => {
     const ordenacao: string = e.target.value;
@@ -54,6 +55,7 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   };
 
   const loadProducts = () => {
+    setProducts(products_placeholder)
     const token = localStorage.getItem("token");
 
     if (isLoggedIn && token) {

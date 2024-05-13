@@ -20,6 +20,8 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
                         <li><Link to={"/produtos?categoria=Creatina"}>Creatina</Link></li>
                         <li><Link to={"/produtos?categoria=Pré-treino"}>Pré-treino</Link></li>
                         <li><Link to={"/produtos?categoria=Hipercalórico"}>Hipercalórico</Link></li>
+                        <li><Link to={`/produtos?categoria=${encodeURIComponent("Pasta de Amendoim")}`}>Pasta de Amendoim</Link></li>
+                        <li><Link to={`/produtos?categoria=${encodeURIComponent("Vitaminas e Minerais")}`}>Vitaminas e Minerais</Link></li>
                     </ul>
         }
         

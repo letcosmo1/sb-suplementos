@@ -7,6 +7,7 @@ import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getHighlightCategories } from '../api/ProductsApi'
 import { getImageUrl } from '../utils/ImageUrl'
+import { highlight_categories_placeholder } from '../utils/Placeholders'
 
 const PaginaInicial = () => {
   const banner_carousel_responsive = {
@@ -52,12 +53,12 @@ const PaginaInicial = () => {
       icon: "categories-slider-coqueteleira.png"
     },
     {
-      name: "Chocolate Fit",
-      icon: "categories-slider-chocolatefit.png"
-    },
-    {
       name: "Ômega 3",
       icon: "categories-slider-omega3.png"
+    },
+    {
+      name: "Vitaminas e Minerais",
+      icon: "categories-slider-vitaminaseminerais.png"
     },
     {
       name: "Thermo Flame",
@@ -77,11 +78,13 @@ const PaginaInicial = () => {
     },
   ])
 
-  const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>([])
-
+  const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>(highlight_categories_placeholder)
+  
   useEffect(() => {
     getHighlightCategories()
-      .then(data => setHighlightCategories(data))
+      .then(data => {
+        setHighlightCategories(data)
+      })
   }, []);
 
   return (

@@ -6,9 +6,8 @@
 }
 .barra-navegacao ul {
     display: flex;
-    justify-content: space-between;
+    gap: 24px;
     align-items: center;
-    width: 500px;
     height: 100%; 
 }
 .barra-navegacao a {

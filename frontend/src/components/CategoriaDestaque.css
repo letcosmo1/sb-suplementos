@@ -11,5 +11,6 @@
 }
 .produtos-destaque {
     display: flex;
+    height: 300px;
     gap: 32px;
 }

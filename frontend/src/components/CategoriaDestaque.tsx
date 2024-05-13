@@ -9,11 +9,23 @@ type PropTypes = {
 }
 
 const CategoriaDestaque = ({ highlight_category, highlight_position }:PropTypes) => {
+    const tituloPlaceholderStyle = () => {
+      if(highlight_category.title === "") {
+        return {
+          width: 200,
+          height: 27,
+          backgroundColor: "var(--light-gray)"
+        }
+      }
+      return {}
+    }
 
     return (
         <section className="produtos-destaque-container">
           <div>
-            <h2>{ highlight_category.title }</h2>
+            <h2 style={ tituloPlaceholderStyle() }>
+              { highlight_category.title }
+            </h2>
             
             <div className="produtos-destaque">
               { highlight_position === "esquerda" && <DestaqueCard imagem={ highlight_category.image } />}
