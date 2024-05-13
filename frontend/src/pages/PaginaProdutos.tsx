@@ -110,8 +110,8 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
               </div>
             )}
           </div>
-          {products.map((product) => {
-            return <ProdutoCard key={product._id} product={product} />;
+          {products.map((product) => { 
+            return <ProdutoCard key={product._id} product={product} isLoggedIn={isLoggedIn}/>;
           })}
         </section>
       </div>

@@ -27,6 +27,7 @@
     --light-gray: #D9D9D9;
     --lighter-gray: #f0f0f0;
     --green: #25844B;
+    --light-red: #df4c38;
     --red: #e03100;
     --view-height: calc(100vh - 110px);
 }

@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { TypeProduct } from "../utils/Types";
 import { getImage } from "../utils/ImageUrl";
 import { toReais } from "../utils/StringFormat";
-import { BaseSyntheticEvent, useState } from "react";
+import { BaseSyntheticEvent, CSSProperties, useState } from "react";
 
 type PropTypes = {
   product: TypeProduct;
+  isLoggedIn?: boolean;
 }
 
-const ProdutoCard = ({ product }: PropTypes) => {
+const ProdutoCard = ({ product, isLoggedIn }: PropTypes) => {
   const [showComprar, setShowComprar] = useState<boolean>(false)
 
   const switchShowComprar = (e: BaseSyntheticEvent) => {
@@ -40,8 +41,25 @@ const ProdutoCard = ({ product }: PropTypes) => {
     return {}
   }
 
+  const indiponivelStyle = () => {
+    const style: CSSProperties = {
+      borderColor: "var(--light-red)"
+    }
+
+    if(isLoggedIn !== undefined && isLoggedIn === true) {
+      if(!product.available) return style
+    }
+
+    return {}
+  }
+
   return (
-    <article className="produto-card" onMouseEnter={ switchShowComprar } onMouseLeave={ switchShowComprar }>
+    <article 
+      className="produto-card" 
+      onMouseEnter={ switchShowComprar } 
+      onMouseLeave={ switchShowComprar }
+      style={ indiponivelStyle() }
+    >
       <Link to={"/produto/" + product._id}>
         <div className="produto-img-container">
           <img src={getImage(product.image)} />

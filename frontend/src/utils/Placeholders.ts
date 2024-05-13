@@ -11,7 +11,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
       {
         _id: "2" ,
@@ -23,7 +23,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
       {
         _id: "3" ,
@@ -35,7 +35,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
       {
         _id: "4" ,
@@ -47,7 +47,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
       {
         _id: "5" ,
@@ -59,7 +59,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
       {
         _id: "6" ,
@@ -71,7 +71,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
       {
         _id: "7" ,
@@ -83,7 +83,7 @@ export const products_placeholder: TypeProduct[] = [
         flavor: "",
         weight: "",
         table: "",
-        available: false
+        available: true
       },
 ]
 
