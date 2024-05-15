@@ -5,16 +5,19 @@ const Pagina404 = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/");
+    navigate("/"); 
   };
   return (
-    <div className="div-404-container">
-      <h1>404</h1>
-      <div className="background-color-container">
-        <h2>Desculpe, página não encontrada</h2>
-        <h4 onClick={handleClick}>Pagina Inicial</h4>
+    <main className="main-404-container">
+      <div className="code-404">
+        <h1>404</h1>
       </div>
-    </div>
+
+      <div className="msg-404-container">
+        <h2>Desculpe, página não encontrada.</h2>
+        <button onClick={ handleClick }>PÁGINA INICIAL</button>
+      </div>
+    </main>
   );
 };
 
