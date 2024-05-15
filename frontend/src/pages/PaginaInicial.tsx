@@ -7,7 +7,7 @@ import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getHighlightCategories } from '../api/ProductsApi'
 import { getImageUrl } from '../utils/ImageUrl'
-import { highlight_categories_placeholder } from '../utils/Placeholders'
+import { highlight_categories_mock, highlight_categories_placeholder } from '../utils/Placeholders'
 
 const PaginaInicial = () => {
   const banner_carousel_responsive = {
@@ -81,10 +81,11 @@ const PaginaInicial = () => {
   const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>(highlight_categories_placeholder)
   
   useEffect(() => {
-    getHighlightCategories()
-      .then(data => {
-        setHighlightCategories(data)
-      })
+    // getHighlightCategories()
+    //   .then(data => {
+    //     setHighlightCategories(data)
+    //   })
+    setHighlightCategories(highlight_categories_mock)
   }, []);
 
   return (

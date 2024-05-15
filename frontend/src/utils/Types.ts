@@ -17,7 +17,7 @@ export type TypeCategorySlider = {
 export type TypeHighlightCategory = {
     _id: string,
     title: string,
-    products: Array<TypeProduct>,
+    products_ids: Array<string>,
     image: string
 }
 export type TypeSaleProduct = {

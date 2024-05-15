@@ -11,6 +11,32 @@ export const getHighlightCategories = () => {
     .then((res) => res.json())
     .then((data: TypeHighlightCategory[]) => data);
 };
+export const getHighlightProducts = (products_ids: string[]) => {
+  return new Promise<TypeProduct[]>((resolve, reject) => {
+    let products: TypeProduct[] = []
+  
+    getProductById(products_ids[0])
+      .then(data => {
+        if(data.available) products.push(data)
+        return getProductById(products_ids[1])
+      })
+      .then(data => {
+        if(data.available) products.push(data);
+        return getProductById(products_ids[2])
+      })
+      .then(data => {
+        if(data.available) products.push(data);
+        return getProductById(products_ids[3])
+      })
+      .then(data => {
+        if(data.available) products.push(data)
+        resolve(products)
+      })
+      .catch(error => {
+        reject(error)
+      })
+  })
+};
 export const getAllProductsAdm = (token: string) => {
   return fetch(`${api_url}/admin/produtos`, {
     method: "GET",
