@@ -52,16 +52,8 @@ const PaginaInicial = () => {
       icon: "categories-slider-coqueteleira.png"
     },
     {
-      name: "Ômega 3",
-      icon: "categories-slider-omega3.png"
-    },
-    {
       name: "Vitaminas e Minerais",
       icon: "categories-slider-vitaminaseminerais.png"
-    },
-    {
-      name: "Thermo Flame",
-      icon: "categories-slider-thermo-flame.png"
     },
     {
       name: "Luva",
