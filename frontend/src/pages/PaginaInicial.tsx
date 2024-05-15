@@ -5,7 +5,6 @@ import Carousel from 'react-multi-carousel'
 import { useEffect, useState } from 'react'
 import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
-import { getHighlightCategories } from '../api/ProductsApi'
 import { getImageUrl } from '../utils/ImageUrl'
 import { highlight_categories_mock, highlight_categories_placeholder } from '../utils/Placeholders'
 
