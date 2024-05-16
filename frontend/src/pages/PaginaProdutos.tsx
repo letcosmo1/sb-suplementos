@@ -24,12 +24,6 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   const categoria = query_params.get("categoria");
   const pesquisa = query_params.get("pesquisa");
 
-  useEffect(() => {
-    if (select) select.value = "asc";
-
-    loadProducts();
-  }, [categoria, pesquisa, isLoggedIn]);
-
   const [titulo, setTitulo] = useState<string>("");
   const [products, setProducts] = useState<TypeProduct[]>(products_placeholder)
 
@@ -78,6 +72,12 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
     getAllProducts("asc").then((data) => setProducts(data));
     return;
   };
+
+  useEffect(() => {
+    if (select) select.value = "asc";
+
+    loadProducts();
+  }, [categoria, pesquisa, isLoggedIn]);
 
   return (
     <main className="pagina-produtos">
