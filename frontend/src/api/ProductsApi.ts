@@ -1,3 +1,4 @@
+import { product_placeholder } from "../utils/Placeholders";
 import {
   TypeHighlightCategory,
   TypeProduct,
@@ -58,7 +59,13 @@ export const getProductsByName = (name: string) => {
 export const getProductById = (id: string | undefined) => {
   return fetch(`${api_url}/product/${id}`)
     .then((res) => res.json())
-    .then((data: TypeProduct) => data);
+    .then((data: any) => {
+      let product: TypeProduct = product_placeholder
+      
+      if(!data.message) product = data
+
+      return product
+    })
 };
 export const getProductsByCategory = (order: string, category: string) => {
   return fetch(`${api_url}/products/category/${order}/${category}`)

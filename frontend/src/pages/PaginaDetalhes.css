@@ -124,6 +124,9 @@
     font-size: 38px;
     margin-right: 16px;
 }
+.produto-preco button:hover {
+    background-color: var(--green-shadow);
+}
 .produto-descricao {
     width: 50%;
     line-height: 22px;

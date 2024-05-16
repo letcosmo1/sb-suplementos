@@ -1,5 +1,5 @@
 import "./ProdutoCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TypeProduct } from "../utils/Types";
 import { getImage } from "../utils/ImageUrl";
 import { toReais } from "../utils/StringFormat";
@@ -11,7 +11,13 @@ type PropTypes = {
 }
 
 const ProdutoCard = ({ product, isLoggedIn }: PropTypes) => {
+  const navigate = useNavigate();
+  
   const [showComprar, setShowComprar] = useState<boolean>(false)
+
+  const handleOnClick = () => {
+    if(product.name) navigate(`produto/${ product._id }`)
+  }
 
   const switchShowComprar = (e: BaseSyntheticEvent) => {
     if(e.type === "mouseenter") {
@@ -58,29 +64,27 @@ const ProdutoCard = ({ product, isLoggedIn }: PropTypes) => {
       className="produto-card" 
       onMouseEnter={ switchShowComprar } 
       onMouseLeave={ switchShowComprar }
+      onClick={ handleOnClick }
       style={ indiponivelStyle() }
     >
-      <Link to={"/produto/" + product._id}>
-        <div className="produto-img-container">
-          <img src={getImage(product.image)} />
+      <div className="produto-img-container">
+        <img src={getImage(product.image)} />
+      </div>
+      <h3 style={ nomePlaceholderStyle() }>
+        {product.name}
+      </h3>
+      {
+        !showComprar &&
+        <p className="produto-valor" style={ precoPlaceholderStyle() }>
+          { product.price === 0 ? null : toReais(product.price) }
+        </p>
+      }
+      {
+        showComprar &&
+        <div className="produto-comprar">
+          <p>COMPRAR</p>
         </div>
-        <h3 style={ nomePlaceholderStyle() }>
-          {product.name}
-        </h3>
-        {
-          !showComprar &&
-          <p className="produto-valor" style={ precoPlaceholderStyle() }>
-            { product.price === 0 ? null : toReais(product.price) }
-          </p>
-        }
-        {
-          showComprar &&
-          <div className="produto-comprar">
-            <p>COMPRAR</p>
-          </div>
-        }
-        
-      </Link>
+      }
     </article>
   );
 };

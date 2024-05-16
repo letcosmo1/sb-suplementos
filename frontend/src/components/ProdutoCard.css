@@ -5,6 +5,7 @@
   border-radius: 8px;
   color: var(--black);
   transition: opacity 0.4s ease;
+  cursor: pointer;
 }
 .produto-card:hover{
   border: 1px solid var(--blue);

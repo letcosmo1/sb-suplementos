@@ -17,7 +17,7 @@ type PropTypes = {
   isLoggedIn: boolean;
 };
 
-const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
+const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {  
   const { id } = useParams();
 
   const [product, setProduct] = useState<TypeProduct>({
@@ -79,12 +79,13 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
   };
 
   useEffect(() => {
-    getProductById(id).then((data) => {
-      setLoading(false);
-      setProduct(data);
-      setAvailable(data.available);
-      setSelectedImage(data.image);
-    });
+    getProductById(id)
+      .then((data) => {
+        setLoading(false);
+        setProduct(data);
+        setAvailable(data.available);
+        setSelectedImage(data.image);
+      })
   }, []);
 
   return (
