@@ -102,16 +102,16 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
       { !loading &&
       <div>
       <nav className="detalhes-breadcrumbs">
-        <Link to={"/"}>Página Inicial</Link>
-        {">"}
+        {!isLoggedIn && <Link to={"/"}>Página Inicial</Link>}
+        {!isLoggedIn && ">"}
         <Link to={"/produtos"}>Produtos</Link>
         {">"}
-        {
+        {!isLoggedIn &&
           <Link to={`/produtos?categoria=${product.category}`}>
             {product.category}
           </Link>
         }
-        {">"}
+        {!isLoggedIn && ">"}
         <Link to={`/produto/${id}`}>{capitalizeFirstLetter(product.name)}</Link>
       </nav>
 

@@ -21,21 +21,21 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={ setIsLoggedIn } />
       <Nav isLoggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<PaginaInicial />} />
+        <Route path="/" element={<PaginaInicial isLoggedIn={ isLoggedIn } />} />
         <Route
           path="/admin/login"
-          element={<PaginaLoginAdm setIsLoggedIn={setIsLoggedIn} />}
+          element={<PaginaLoginAdm setIsLoggedIn={ setIsLoggedIn } />}
         />
         <Route
           path="/produtos"
-          element={<PaginaProdutos isLoggedIn={isLoggedIn} />}
+          element={<PaginaProdutos isLoggedIn={ isLoggedIn } />}
         />
         <Route
           path="/produto/:id"
-          element={<PaginaDetalhes isLoggedIn={isLoggedIn} />}
+          element={<PaginaDetalhes isLoggedIn={ isLoggedIn } />}
         />
         <Route path="*" element={<Pagina404 />} />
       </Routes>

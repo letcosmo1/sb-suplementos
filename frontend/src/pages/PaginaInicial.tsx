@@ -8,8 +8,15 @@ import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getImageUrl } from '../utils/ImageUrl'
 import { highlight_categories_mock, highlight_categories_placeholder } from '../utils/Placeholders'
 import { categories_slider } from '../utils/CategoriesSlider'
+import { useNavigate } from 'react-router-dom'
 
-const PaginaInicial = () => {
+type PropTypes = {
+  isLoggedIn: boolean;
+};
+
+const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
+  const navigate = useNavigate();
+
   const banner_carousel_responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -32,8 +39,10 @@ const PaginaInicial = () => {
     //   .then(data => {
     //     setHighlightCategories(data)
     //   })
+    if(isLoggedIn) navigate("/produtos")
+
     setHighlightCategories(highlight_categories_mock)
-  }, []);
+  }, [isLoggedIn]);
 
   return (
       <main>

@@ -24,6 +24,13 @@ const Header = ({ isLoggedIn, setIsLoggedIn }: PropTypes) => {
         setIsLoggedIn(false)
       }
     }
+    const renderInput = () => {
+      if(location.pathname === "/login") return false
+
+      if(isLoggedIn) return false
+      
+      return true
+    }
 
     return (
       <header>
@@ -33,7 +40,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }: PropTypes) => {
           </h1>
         </Link>
         
-        {location.pathname !== "/login" && 
+        {renderInput() && 
         <form>
             <input type="text" placeholder="Pesquisar" onChange={ handlePesquisaChange }/>
             
