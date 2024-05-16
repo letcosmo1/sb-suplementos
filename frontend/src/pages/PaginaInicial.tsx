@@ -7,6 +7,7 @@ import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getImageUrl } from '../utils/ImageUrl'
 import { highlight_categories_mock, highlight_categories_placeholder } from '../utils/Placeholders'
+import { categories_slider } from '../utils/CategoriesSlider'
 
 const PaginaInicial = () => {
   const banner_carousel_responsive = {
@@ -22,52 +23,7 @@ const PaginaInicial = () => {
     }
   }
 
-  const [categoriesSlider] = useState<TypeCategorySlider[]>([
-    {
-      name: "Creatina",
-      icon: "categories-slider-creatina.png"
-    },
-    {
-      name: "Whey",
-      icon: "categories-slider-whey.png"
-    },
-    {
-      name: "Pré-treino",
-      icon: "categories-slider-pretreino.png"
-    },
-    {
-      name: "Barra de Proteína",
-      icon: "categories-slider-barradeproteina.png"
-    },
-    {
-      name: "Hipercalórico",
-      icon: "categories-slider-hipercalorico.png"
-    },
-    {
-      name: "Albumina",
-      icon: "categories-slider-albumina.png"
-    },
-    {
-      name: "Coqueteleira",
-      icon: "categories-slider-coqueteleira.png"
-    },
-    {
-      name: "Vitaminas e Minerais",
-      icon: "categories-slider-vitaminaseminerais.png"
-    },
-    {
-      name: "Luva",
-      icon: "categories-slider-luva.png"
-    },
-    {
-      name: "Joelheira",
-      icon: "categories-slider-caneleira.png"
-    },
-    {
-      name: "Tornozeleira",
-      icon: "categories-slider-tornozeleira.png"
-    },
-  ])
+  const [categoriesSlider] = useState<TypeCategorySlider[]>(categories_slider)
 
   const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>(highlight_categories_placeholder)
   
