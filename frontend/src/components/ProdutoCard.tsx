@@ -3,6 +3,7 @@ import { TypeProduct } from "../utils/Types";
 import { getImage } from "../utils/ImageUrl";
 import { toReais } from "../utils/StringFormat";
 import { BaseSyntheticEvent, CSSProperties, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type PropTypes = {
   product: TypeProduct;
@@ -10,10 +11,12 @@ type PropTypes = {
 }
 
 const ProdutoCard = ({ product, isLoggedIn }: PropTypes) => {
+  const navigate = useNavigate()
+
   const [showComprar, setShowComprar] = useState<boolean>(false)
 
   const handleOnClick = () => {
-    if(product.name) window.location.replace(`produto/${ product._id }`)
+    if(product.name) navigate(`/produto/${ product._id }`)
   }
 
   const switchShowComprar = (e: BaseSyntheticEvent) => {
