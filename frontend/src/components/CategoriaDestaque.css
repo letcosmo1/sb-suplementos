@@ -14,3 +14,12 @@
     height: 300px;
     gap: 32px;
 }
+
+@media (max-width: 1000px) {
+    .produtos-destaque {
+        display: flex;
+        flex-wrap: wrap;
+        height: fit-content;
+        gap: 0;
+    }
+}
