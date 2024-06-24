@@ -18,15 +18,19 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
   const navigate = useNavigate();
 
   const banner_carousel_responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+    device: {
+      breakpoint: { max: 3000, min: 0 },
       items: 1
     }
   }
   const categories_carousel_responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1000 },
       items: 7
+    },
+    mobile: {
+      breakpoint: { max: 1000, min: 0 },
+      items: 5
     }
   }
 
