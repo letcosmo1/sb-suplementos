@@ -43,3 +43,14 @@ footer {
     font-size: 32px;
     margin-right: 16px;
 }
+
+@media (max-width: 1000px) {
+    footer {
+        flex-direction: column;
+        padding: 0;
+        height: fit-content;
+    }
+    .footer-info {
+        flex-direction: column;
+    }
+}
