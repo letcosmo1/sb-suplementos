@@ -33,9 +33,7 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
     return (
         
         <nav className="barra-navegacao">
-            <ul>
-                { renderLinks() }
-            </ul>
+            { renderLinks() }
         </nav>
     )
   }
