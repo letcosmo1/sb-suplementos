@@ -41,7 +41,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }: PropTypes) => {
         </Link>
         
         {renderInput() && 
-        <form>
+        <form className="header-form">
             <input type="text" placeholder="Pesquisar" onChange={ handlePesquisaChange }/>
             
             <Link to={`/produtos?pesquisa=${pesquisa}`}>
