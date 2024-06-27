@@ -16,9 +16,6 @@
 
 @media (max-width: 1000px) {
     .barra-navegacao {
-        width: 100%;
-    }
-    .barra-navegacao ul {
-        display: none
+        display: none;
     }
 }
