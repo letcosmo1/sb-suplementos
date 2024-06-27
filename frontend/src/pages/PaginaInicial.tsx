@@ -30,7 +30,7 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
     },
     mobile: {
       breakpoint: { max: 1000, min: 0 },
-      items: 5
+      items: 4
     }
   }
 

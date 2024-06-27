@@ -16,8 +16,17 @@
 }
 
 @media (max-width: 1000px) {
+    .banner-carousel {
+        margin-bottom: 16px;
+    }
     .banner-carousel img {
         width: 100%;
         height: 40vh;
+    }
+    .categories-carousel-container {
+        margin-bottom: 16px;
+    }
+    .categories-carousel {
+        width: 100%;
     }
 }

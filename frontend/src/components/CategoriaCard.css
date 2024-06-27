@@ -16,3 +16,12 @@
 .categoria-card h2 {
     font-weight: 400;
 }
+
+@media (max-width: 1000px) {
+    .categoria-card {
+        width: 25vw;
+    }
+    .categoria-card h2 {
+        font-size: 11px;
+    }
+}
