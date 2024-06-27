@@ -15,7 +15,7 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
 
         if(!isLoggedIn) {
             return  <ul>
-                        <li><Link to={"/produtos"}>Todos os produtos</Link></li>
+                        <li id="todos-produtos"><Link to={"/produtos"}>Todos os produtos</Link></li>
                         <li><Link to={"/produtos?categoria=Whey"}>Whey</Link></li>
                         <li><Link to={"/produtos?categoria=Creatina"}>Creatina</Link></li>
                         <li><Link to={"/produtos?categoria=Pré-treino"}>Pré-treino</Link></li>
@@ -36,6 +36,6 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
             { renderLinks() }
         </nav>
     )
-  }
+}
   
-  export default Nav
+export default Nav
