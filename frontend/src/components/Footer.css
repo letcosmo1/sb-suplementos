@@ -21,14 +21,6 @@ footer {
 .footer-info div {
     margin-right: 128px;
 }
-.footer-admin {
-    display: flex;
-    margin-left: 128px;
-}
-.footer-admin a {
-    cursor: text;
-    color: var(--white);
-}
 .footer-links {
     display: flex;
     flex-direction: column;
@@ -47,10 +39,22 @@ footer {
 @media (max-width: 1000px) {
     footer {
         flex-direction: column;
-        padding: 0;
+        padding: 16px;
         height: fit-content;
     }
     .footer-info {
         flex-direction: column;
+        gap: 16px;
+        margin: 16px 0;
+    }
+    .footer-links {
+        gap: 16px;
+    }
+    .footer-info div {
+        margin-right: 0;
+    }
+    .footer-links svg {
+        font-size: 40px;
+        margin-right: 16px;
     }
 }
