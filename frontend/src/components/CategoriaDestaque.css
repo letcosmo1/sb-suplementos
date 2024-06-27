@@ -16,10 +16,17 @@
 }
 
 @media (max-width: 1000px) {
+    .produtos-destaque-container {
+        width: calc(100% - 32px);
+        padding: 0 16px;
+    }
+    .produtos-destaque-container h2 {
+        margin-bottom: 16px;
+    }
     .produtos-destaque {
         display: flex;
         flex-wrap: wrap;
         height: fit-content;
-        gap: 0;
+        gap: 8px;
     }
 }

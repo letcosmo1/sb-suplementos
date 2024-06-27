@@ -54,7 +54,7 @@
 
 @media (max-width: 1000px) {
   .produto-card {
-    width: calc(50% - 34px);
+    width: calc(50% - 42px);
     padding: 16px;
   }
 }
