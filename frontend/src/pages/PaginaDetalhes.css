@@ -136,3 +136,36 @@
     font-weight: 400;
     margin-bottom: 4px;
 }
+
+@media (max-width: 1000px) {
+    .pagina-detalhes {
+        margin: 0 16px;
+    }
+    .detalhes-breadcrumbs {
+        font-size: 12px;
+    }
+    .detalhes-breadcrumbs a {
+        font-size: 12px;
+    }
+    .detalhes-container {
+        flex-direction: column;
+        gap: 24px;
+        margin: 16px 0 24px 0;
+    }
+    .produto-imagens {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+    }
+    .produto-info {
+        width: 100%;
+    }
+    .produto-compras {
+        width: 100%;   
+    }
+    .produto-descricao {
+        width: 100%;
+        line-height: 0;
+        margin: 0;
+    }
+}

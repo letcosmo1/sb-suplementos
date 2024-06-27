@@ -148,6 +148,7 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
             </div>
           )}
         </section>
+        
         <div className="produto-compras">
           <section className="produto-disponivel">
             <h3>{product.available ? "Em estoque" : "Indisponível"}</h3>
