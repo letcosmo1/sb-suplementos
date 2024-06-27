@@ -47,3 +47,17 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+@media (max-width: 1000px) {
+    .pagina-produtos {
+        margin: 0 16px;
+    }
+    .ordenacao-container {
+        width: calc(100% - 8px);
+        margin: 16px 0;
+    }
+    .produtos {
+        width: 100%;
+        gap: 8px;
+    }
+}
