@@ -4,6 +4,8 @@ Projeto Interdisciplinar do III período do curso Ánalise e Desenvolvimento de 
 
 Website desenvolvido para a SB Suplementos, loja de suplementos localizada em Barreiros/PE, para exposição do catálogo de produtos a fim de facilitar a compra para o cliente.
 
+Sistema com 100% de responsividade para dispositivos móveis.
+
 Link do site: https://sb-suplementos.vercel.app
 
 ## Colaboradores
