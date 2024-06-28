@@ -41,3 +41,15 @@
 .msg-404-container button:hover {
     background-color: var(--blue-shadow);
 }
+
+@media (max-width: 1000px) {
+    .main-404-container {
+        height: var(--view-height-mobile);
+    }
+    .code-404 h1 {
+        font-size: 140px;
+    }
+    .msg-404-container h2 {
+        font-size: 24px;
+    }
+}
