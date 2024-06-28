@@ -46,3 +46,9 @@
     color: var(--red);
     margin-top: 4px;
 }
+
+@media (max-width: 1000px) {
+    .pagina-login {
+        height: var(--view-height-mobile);
+    }
+}
