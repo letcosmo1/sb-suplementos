@@ -17,6 +17,7 @@
 
 @media (max-width: 1000px) {
     .banner-carousel {
+        width: 100%;
         margin-bottom: 16px;
     }
     .banner-carousel img {
@@ -25,8 +26,5 @@
     }
     .categories-carousel-container {
         margin-bottom: 16px;
-    }
-    .categories-carousel {
-        width: 100%;
     }
 }

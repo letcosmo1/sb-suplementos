@@ -9,6 +9,7 @@ import { getImageUrl } from '../utils/ImageUrl'
 import { highlight_categories_mock, highlight_categories_placeholder } from '../utils/Placeholders'
 import { categories_slider } from '../utils/CategoriesSlider'
 import { useNavigate } from 'react-router-dom'
+import { useMediaQuery } from 'react-responsive'
 
 type PropTypes = {
   isLoggedIn: boolean;
@@ -16,6 +17,7 @@ type PropTypes = {
 
 const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
 
   const banner_carousel_responsive = {
     device: {
@@ -32,6 +34,19 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
       breakpoint: { max: 1000, min: 0 },
       items: 4
     }
+  }
+  const loadBanners = () => {
+    if(isMobile) {
+      return [
+      <img key="1" src={ getImageUrl("banner1-responsive.jpg") } alt="banner" />,
+      <img key="2" src={ getImageUrl("banner-responsive.jpg") } alt="banner" />
+    ]
+    }
+    
+    return [
+      <img key="1" src={ getImageUrl("banner1.jpg") } alt="banner" />,
+      <img key="2" src={ getImageUrl("banner.png") } alt="banner" />
+    ]
   }
 
   const [categoriesSlider] = useState<TypeCategorySlider[]>(categories_slider)
@@ -57,8 +72,9 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
           autoPlay={ true } 
           autoPlaySpeed={ 5000 }
         >
-          <img src={ getImageUrl("banner1.jpg") } alt="banner" />
-          <img src={ getImageUrl("banner.png") } alt="banner" />
+          {
+            loadBanners()
+          }
         </Carousel>
 
         <div className="categories-carousel-container">
