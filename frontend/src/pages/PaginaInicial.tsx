@@ -40,9 +40,8 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
       return [
       <img key="1" src={ getImageUrl("banner1-responsive.jpg") } alt="banner" />,
       <img key="2" src={ getImageUrl("banner-responsive.jpg") } alt="banner" />
-    ]
+      ]
     }
-    
     return [
       <img key="1" src={ getImageUrl("banner1.jpg") } alt="banner" />,
       <img key="2" src={ getImageUrl("banner.png") } alt="banner" />
@@ -72,9 +71,7 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
           autoPlay={ true } 
           autoPlaySpeed={ 5000 }
         >
-          {
-            loadBanners()
-          }
+          { loadBanners() }
         </Carousel>
 
         <div className="categories-carousel-container">

@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive'
 import './Nav.css'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -7,13 +8,14 @@ type PropTypes = {
 
 const Nav = ({ isLoggedIn }: PropTypes) => {
     const location = useLocation()
+    const isMobile = useMediaQuery({ query: '(max-width: 1000px)' })
 
     const renderLinks = () => {
         if(location.pathname === "/admin/login") {
             return <ul></ul>
         }
 
-        if(!isLoggedIn) {
+        if(!isLoggedIn && !isMobile) {
             return  <ul>
                         <li id="todos-produtos"><Link to={"/produtos"}>Todos os produtos</Link></li>
                         <li><Link to={"/produtos?categoria=Whey"}>Whey</Link></li>

@@ -18,10 +18,4 @@
     .barra-navegacao {
         height: 36px;
     }
-    .barra-navegacao li {
-        display: none;
-    }
-    #todos-produtos {
-        display: block;
-    }
 }
