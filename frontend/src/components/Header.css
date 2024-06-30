@@ -44,11 +44,11 @@ header button {
         width: calc(100% - 32px);
         flex-direction: column;
         height: fit-content;
-        padding: 16px;
+        padding: 8px 16px 16px 16px;
     }
     .header-logo {
         margin-left: 0;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
     }
     .header-form {
         width: 100%;
