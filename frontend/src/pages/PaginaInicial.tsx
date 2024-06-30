@@ -75,7 +75,14 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
         </Carousel>
 
         <div className="categories-carousel-container">
-          <Carousel containerClass="categories-carousel" responsive={ categories_carousel_responsive } infinite={ true }>
+          <Carousel 
+            containerClass="categories-carousel" 
+            responsive={ categories_carousel_responsive } 
+            infinite={ true }
+            showDots={ true }
+            removeArrowOnDeviceType={["mobile"]}
+            dotListClass="categories-carousel-pontos"
+          >
             { categoriesSlider.map((category_slider) => { 
               return <CategoriaCard 
                         key={ category_slider.name } 
