@@ -57,6 +57,10 @@
     width: calc(50% - 42px);
     padding: 16px;
   }
+  .produto-card:hover{
+    border: 1px solid var(--lighter-gray);
+    transition: none;
+  }
 }
 
 
