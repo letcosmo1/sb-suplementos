@@ -18,4 +18,11 @@
     .barra-navegacao {
         height: 36px;
     }
+    .nav-carousel {
+        width: 100%;
+    }
+    .nav-carousel ul {
+        text-align: center;
+        gap: 0;
+    }
 }
