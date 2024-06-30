@@ -32,7 +32,7 @@
     --light-red: #df4c38;
     --red: #e03100;
     --view-height: calc(100vh - 110px);
-    --view-height-mobile: calc(100vh - 200px);
+    --view-height-mobile: calc(100vh - 177px);
 }
 input:focus {
     outline: none;
