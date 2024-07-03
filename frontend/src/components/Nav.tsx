@@ -17,26 +17,30 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
         }
     }
     const links = [
-        <li key="1"><Link to={"/produtos"}>Todos os produtos</Link></li>,
-        <li key="2"><Link to={"/produtos?categoria=Whey"}>Whey</Link></li>,
-        <li key="3"><Link to={"/produtos?categoria=Creatina"}>Creatina</Link></li>,
-        <li key="4"><Link to={"/produtos?categoria=Pré-treino"}>Pré-treino</Link></li>,
-        <li key="5"><Link to={"/produtos?categoria=Hipercalórico"}>Hipercalórico</Link></li>,
-        <li key="6"><Link to={`/produtos?categoria=${encodeURIComponent("Pasta de Amendoim")}`}>Pasta de Amendoim</Link></li>,
-        <li key="7"><Link to={`/produtos?categoria=${encodeURIComponent("Vitaminas e Minerais")}`}>Vitaminas e Minerais</Link></li>,
+        <Link key="1" to={"/produtos"}>Todos os produtos</Link>,
+        <Link key="2" to={"/produtos?categoria=Whey"}>Whey</Link>,
+        <Link key="3" to={"/produtos?categoria=Creatina"}>Creatina</Link>,
+        <Link key="4" to={"/produtos?categoria=Pré-treino"}>Pré-treino</Link>,
+        <Link key="5" to={"/produtos?categoria=Hipercalórico"}>Hipercalórico</Link>,
+        <Link key="6" to={`/produtos?categoria=${encodeURIComponent("Pasta de Amendoim")}`}>Pasta de Amendoim</Link>,
+        <Link key="7" to={`/produtos?categoria=${encodeURIComponent("Vitaminas e Minerais")}`}>Vitaminas e Minerais</Link>,
     ]
 
     const renderLinks = () => {
-        if(location.pathname === "/admin/login") return 
+        if(location.pathname === "/admin/login") 
+            return [<a></a>]
 
-        if(!isLoggedIn) return links
+        if(!isLoggedIn) 
+            return links
         
-        return <li style={{ justifyContent: "center" }}><Link to={"/produtos"}>Todos os produtos</Link></li>
+        return [
+                <li style={{ justifyContent: "center" }}><Link to={"/produtos"}>Todos os produtos</Link></li>
+               ]
     }
 
     return (
         <nav className="barra-navegacao">
-            { isMobile ?
+            { isMobile &&
             <Carousel 
                 containerClass="nav-carousel" 
                 responsive={ nav_carousel_responsive } 
@@ -45,8 +49,14 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
             >
                 { renderLinks() }
             </Carousel>
-            :     
-            <ul>{ renderLinks() }</ul>
+            }
+
+            { !isMobile &&
+            <ul>
+                { renderLinks()
+                    .map((element) => { return <li>{ element }</li> }) 
+                }
+            </ul>
             }
         </nav>
     )

@@ -25,4 +25,7 @@
         text-align: center;
         gap: 0;
     }
+    .nav-carousel a {
+        font-size: 12px;
+    }
 }
