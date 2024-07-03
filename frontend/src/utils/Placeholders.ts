@@ -171,39 +171,3 @@ export const highlight_categories_placeholder: TypeHighlightCategory[] = [
     image: ""
   }
 ]
-
-export const highlight_categories_mock: TypeHighlightCategory[] = [
-  {
-    _id: "1",
-    title: "MAX TITANIUM",
-    products_ids: [
-      "6612e28810177fe2cfdd6aa8",
-      "6612e28810177fe2cfdd6aa9",
-      "6612e28810177fe2cfdd6ac9",
-      "6612e28810177fe2cfdd6acb"
-    ],
-    image: "destaque.png"
-  },
-  {
-    _id: "2",
-    title: "INTEGRAL MEDICA",
-    products_ids: [
-      "6612e28810177fe2cfdd6ac6",
-      "6612e28810177fe2cfdd6ac7",
-      "6612e28810177fe2cfdd6a9d",
-      "6612e28810177fe2cfdd6aa6"
-    ],
-    image: "destaque.png"
-  },
-  {
-    _id: "3",
-    title: "GROWTH",
-    products_ids: [
-      "6612e28810177fe2cfdd6a9e",
-      "6612e28810177fe2cfdd6aa0",
-      "6612e28810177fe2cfdd6ab4",
-      "6612e28810177fe2cfdd6aa3"
-    ],
-    image: "destaque.png"
-  }
-]

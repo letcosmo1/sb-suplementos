@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react'
 import { TypeHighlightCategory, TypeCategorySlider } from '../utils/Types'
 import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getImageUrl } from '../utils/ImageUrl'
-import { highlight_categories_mock, highlight_categories_placeholder } from '../utils/Placeholders'
+import { highlight_categories_placeholder } from '../utils/Placeholders'
 import { categories_slider } from '../utils/CategoriesSlider'
 import { useNavigate } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
+import { getHighlightCategories } from '../api/ProductsApi'
 
 type PropTypes = {
   isLoggedIn: boolean;
@@ -53,13 +54,11 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
   const [highlightCategories, setHighlightCategories] = useState<TypeHighlightCategory[]>(highlight_categories_placeholder)
   
   useEffect(() => {
-    // getHighlightCategories()
-    //   .then(data => {
-    //     setHighlightCategories(data)
-    //   })
+    getHighlightCategories()
+      .then(data => {
+        setHighlightCategories(data)
+      })
     if(isLoggedIn) navigate("/produtos")
-
-    setHighlightCategories(highlight_categories_mock)
   }, [isLoggedIn]);
 
   return (
