@@ -10,6 +10,7 @@ import {
   getProductsByName,
 } from "../api/ProductsApi";
 import { products_placeholder } from "../utils/Placeholders";
+import { ClipLoader } from "react-spinners";
 
 type PropTypes = {
   isLoggedIn: boolean;
@@ -27,15 +28,33 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   const [titulo, setTitulo] = useState<string>("");
   const [products, setProducts] = useState<TypeProduct[]>(products_placeholder)
 
+  const [loading, setLoading] = useState(true)
+
+  const centerLoader = () => {
+    if(loading) {
+      return {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }
+    }
+    return {}
+  }
+
   const handleOrdenacaoChange = (e: BaseSyntheticEvent) => {
     const ordenacao: string = e.target.value;
+    setLoading(true)
 
     if (categoria) {
-      getProductsByCategory(ordenacao, categoria).then((data) =>
+      getProductsByCategory(ordenacao, categoria).then((data) => {
+        setLoading(false)
         setProducts(data)
-      );
+      });
     } else {
-      getAllProducts(ordenacao).then((data) => setProducts(data));
+      getAllProducts(ordenacao).then((data) => {
+        setLoading(false)
+        setProducts(data)
+      });
     }
   };
 
@@ -54,22 +73,34 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
 
     if (isLoggedIn && token) {
       setTitulo("TODOS OS PRODUTOS");
-      getAllProductsAdm(token).then((data) => setProducts(data));
+      getAllProductsAdm(token).then((data) => {
+        setLoading(false)
+        setProducts(data)
+      });
       return;
     }
     if (categoria) {
       setTitulo(categoria);
-      getProductsByCategory("asc", categoria).then((data) => setProducts(data));
+      getProductsByCategory("asc", categoria).then((data) => {
+        setLoading(false)
+        setProducts(data)
+      });
       return;
     }
     if (pesquisa) {
       setTitulo(`Resultado da pesquisa '${pesquisa}'`);
-      getProductsByName(pesquisa).then((data) => setProducts(data));
+      getProductsByName(pesquisa).then((data) => {
+        setLoading(false)
+        setProducts(data)
+      });
       return;
     }
 
     setTitulo("TODOS OS PRODUTOS");
-    getAllProducts("asc").then((data) => setProducts(data));
+    getAllProducts("asc").then((data) => {
+      setLoading(false)
+      setProducts(data)
+    });
     return;
   };
 
@@ -80,7 +111,19 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   }, [categoria, pesquisa, isLoggedIn]);
 
   return (
-    <main className="pagina-produtos">
+    <main className="pagina-produtos" style={ centerLoader() }>
+      { loading &&
+      <ClipLoader
+        color={ "var(--blue)" }
+        loading={ loading }
+        size={ 70 } 
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+      }
+
+      { !loading &&
+      <div>
       <nav className="produtos-breadcrumbs">
         {!isLoggedIn && <Link to={"/"}>Página Inicial</Link>}
         {!isLoggedIn && ">"}
@@ -115,6 +158,8 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
           })}
         </section>
       </div>
+      </div>
+      }
     </main>
   );
 };
