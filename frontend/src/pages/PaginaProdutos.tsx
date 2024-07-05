@@ -125,8 +125,6 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
       { !loading &&
       <div>
       <nav className="produtos-breadcrumbs">
-        {!isLoggedIn && <Link to={"/"}>Página Inicial</Link>}
-        {!isLoggedIn && ">"}
         <Link to={"/produtos"}>Produtos</Link>
         {categoria && ">"}
         {categoria && <Link to={`/produtos/${categoria}`}>{categoria}</Link>}
