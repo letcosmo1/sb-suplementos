@@ -9,7 +9,6 @@ import {
   getProductsByCategory,
   getProductsByName,
 } from "../api/ProductsApi";
-import { products_placeholder } from "../utils/Placeholders";
 import { ClipLoader } from "react-spinners";
 
 type PropTypes = {
@@ -26,7 +25,7 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   const pesquisa = query_params.get("pesquisa");
 
   const [titulo, setTitulo] = useState<string>("");
-  const [products, setProducts] = useState<TypeProduct[]>(products_placeholder)
+  const [products, setProducts] = useState<TypeProduct[]>([])
 
   const [loading, setLoading] = useState(true)
 
@@ -68,7 +67,7 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   };
 
   const loadProducts = () => {
-    setProducts(products_placeholder)
+    setLoading(true);
     const token = localStorage.getItem("token");
 
     if (isLoggedIn && token) {
