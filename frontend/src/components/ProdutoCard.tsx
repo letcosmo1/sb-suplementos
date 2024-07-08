@@ -2,15 +2,14 @@ import "./ProdutoCard.css";
 import { TypeProduct } from "../utils/Types";
 import { getImage } from "../utils/ImageUrl";
 import { toReais } from "../utils/StringFormat";
-import { BaseSyntheticEvent, CSSProperties, useState } from "react";
+import { BaseSyntheticEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type PropTypes = {
   product: TypeProduct;
-  isLoggedIn?: boolean;
 }
 
-const ProdutoCard = ({ product, isLoggedIn }: PropTypes) => {
+const ProdutoCard = ({ product }: PropTypes) => {
   const navigate = useNavigate()
 
   const [showComprar, setShowComprar] = useState<boolean>(false)
@@ -47,25 +46,12 @@ const ProdutoCard = ({ product, isLoggedIn }: PropTypes) => {
     return {}
   }
 
-  const indiponivelStyle = () => {
-    const style: CSSProperties = {
-      borderColor: "var(--light-red)"
-    }
-
-    if(isLoggedIn !== undefined && isLoggedIn === true) {
-      if(!product.available) return style
-    }
-
-    return {}
-  }
-
   return (
     <article 
       className="produto-card" 
       onMouseEnter={ switchShowComprar } 
       onMouseLeave={ switchShowComprar }
       onClick={ handleOnClick }
-      style={ indiponivelStyle() }
     >
       <div className="produto-img-container">
         <img src={getImage(product.image)} />

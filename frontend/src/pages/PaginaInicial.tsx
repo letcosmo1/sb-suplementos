@@ -12,11 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { getHighlightCategories } from '../api/ProductsApi'
 
-type PropTypes = {
-  isLoggedIn: boolean;
-};
-
-const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
+const PaginaInicial = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
 
@@ -58,8 +54,7 @@ const PaginaInicial = ({ isLoggedIn }: PropTypes) => {
       .then(data => {
         setHighlightCategories(data)
       })
-    if(isLoggedIn) navigate("/produtos")
-  }, [isLoggedIn]);
+  }, []);
 
   return (
       <main>

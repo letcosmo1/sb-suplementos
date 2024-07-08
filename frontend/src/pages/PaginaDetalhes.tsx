@@ -8,16 +8,11 @@ import { useEffect, useState } from "react";
 import {
   getProductById,
   sendProductForSale,
-  updateProductAvailableAdm,
 } from "../api/ProductsApi";
 import { capitalizeFirstLetter, toReais } from "../utils/StringFormat";
 import ClipLoader from "react-spinners/ClipLoader";
 
-type PropTypes = {
-  isLoggedIn: boolean;
-};
-
-const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {  
+const PaginaDetalhes = () => {  
   const { id } = useParams();
 
   const [product, setProduct] = useState<TypeProduct>({
@@ -34,8 +29,6 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
   });
 
   const [selectedImage, setSelectedImage] = useState<string>("");
-
-  const [available, setAvailable] = useState<boolean>(true);
 
   const [loading, setLoading] = useState(true);
 
@@ -66,24 +59,11 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
     );
   };
 
-  const handleAvailableChange = () => {
-    const token: string | null = localStorage.getItem("token");
-
-    if (isLoggedIn && token) {
-      updateProductAvailableAdm(token, product._id, !available);
-      let updated_product: TypeProduct = product;
-      updated_product.available = !available;
-      setProduct(updated_product);
-      setAvailable(!available);
-    }
-  };
-
   useEffect(() => {
     getProductById(id)
       .then((data) => {
         setLoading(false);
         setProduct(data);
-        setAvailable(data.available);
         setSelectedImage(data.image);
       })
   }, []);
@@ -104,12 +84,6 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
       <nav className="detalhes-breadcrumbs">
         <Link to={"/produtos"}>Produtos</Link>
         {">"}
-        {!isLoggedIn &&
-          <Link to={`/produtos?categoria=${product.category}`}>
-            {product.category}
-          </Link>
-        }
-        {!isLoggedIn && ">"}
         <Link to={`/produto/${id}`}>{capitalizeFirstLetter(product.name)}</Link>
       </nav>
 
@@ -150,13 +124,6 @@ const PaginaDetalhes = ({ isLoggedIn }: PropTypes) => {
         <div className="produto-compras">
           <section className="produto-disponivel">
             <h3>{product.available ? "Em estoque" : "Indisponível"}</h3>
-            {isLoggedIn && (
-              <input
-                type="checkbox"
-                checked={available}
-                onChange={handleAvailableChange}
-              />
-            )}
           </section>
           <section className="produto-preco">
             <h3>Preço</h3>

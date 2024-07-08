@@ -5,17 +5,12 @@ import { BaseSyntheticEvent, useEffect, useState } from "react";
 import { TypeProduct } from "../utils/Types";
 import {
   getAllProducts,
-  getAllProductsAdm,
   getProductsByCategory,
   getProductsByName,
 } from "../api/ProductsApi";
 import { ClipLoader } from "react-spinners";
 
-type PropTypes = {
-  isLoggedIn: boolean;
-};
-
-const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
+const PaginaProdutos = () => {
   const select: HTMLSelectElement | null =
     document.querySelector("#select-ordenacao");
 
@@ -58,26 +53,14 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
   };
 
   const renderOrdernacao = () => {
-    if (isLoggedIn) {
-      return false;
-    } else {
-      if (pesquisa) return false;
-    }
+    if (pesquisa) return false;
+
     return true;
   };
 
   const loadProducts = () => {
     setLoading(true);
-    const token = localStorage.getItem("token");
 
-    if (isLoggedIn && token) {
-      setTitulo("TODOS OS PRODUTOS");
-      getAllProductsAdm(token).then((data) => {
-        setLoading(false)
-        setProducts(data)
-      });
-      return;
-    }
     if (categoria) {
       setTitulo(categoria);
       getProductsByCategory("asc", categoria).then((data) => {
@@ -107,7 +90,7 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
     if (select) select.value = "asc";
 
     loadProducts();
-  }, [categoria, pesquisa, isLoggedIn]);
+  }, [categoria, pesquisa]);
 
   return (
     <main className="pagina-produtos" style={ centerLoader() }>
@@ -151,7 +134,7 @@ const PaginaProdutos = ({ isLoggedIn }: PropTypes) => {
             )}
           </div>
           {products.map((product) => { 
-            return <ProdutoCard key={product._id} product={product} isLoggedIn={isLoggedIn}/>;
+            return <ProdutoCard key={product._id} product={product}/>;
           })}
         </section>
       </div>
