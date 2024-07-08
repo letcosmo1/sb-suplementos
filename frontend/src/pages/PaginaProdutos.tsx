@@ -1,25 +1,25 @@
-import "./PaginaProdutos.css";
-import { Link, useLocation } from "react-router-dom";
-import ProdutoCard from "../components/ProdutoCard";
-import { BaseSyntheticEvent, useEffect, useState } from "react";
-import { TypeProduct } from "../utils/Types";
+import "./PaginaProdutos.css"
+import { Link, useLocation } from "react-router-dom"
+import ProdutoCard from "../components/ProdutoCard"
+import { BaseSyntheticEvent, useEffect, useState } from "react"
+import { TypeProduct } from "../utils/Types"
 import {
   getAllProducts,
   getProductsByCategory,
   getProductsByName,
-} from "../api/ProductsApi";
-import { ClipLoader } from "react-spinners";
+} from "../api/ProductsApi"
+import { ClipLoader } from "react-spinners"
 
 const PaginaProdutos = () => {
   const select: HTMLSelectElement | null =
-    document.querySelector("#select-ordenacao");
+    document.querySelector("#select-ordenacao")
 
-  const location = useLocation();
-  const query_params = new URLSearchParams(location.search);
-  const categoria = query_params.get("categoria");
-  const pesquisa = query_params.get("pesquisa");
+  const location = useLocation()
+  const query_params = new URLSearchParams(location.search)
+  const categoria = query_params.get("categoria")
+  const pesquisa = query_params.get("pesquisa")
 
-  const [titulo, setTitulo] = useState<string>("");
+  const [titulo, setTitulo] = useState<string>("")
   const [products, setProducts] = useState<TypeProduct[]>([])
 
   const [loading, setLoading] = useState(true)
@@ -43,54 +43,48 @@ const PaginaProdutos = () => {
       getProductsByCategory(ordenacao, categoria).then((data) => {
         setLoading(false)
         setProducts(data)
-      });
+      })
     } else {
       getAllProducts(ordenacao).then((data) => {
         setLoading(false)
         setProducts(data)
-      });
+      })
     }
-  };
-
-  const renderOrdernacao = () => {
-    if (pesquisa) return false;
-
-    return true;
-  };
+  }
 
   const loadProducts = () => {
-    setLoading(true);
+    setLoading(true)
 
     if (categoria) {
       setTitulo(categoria);
       getProductsByCategory("asc", categoria).then((data) => {
         setLoading(false)
         setProducts(data)
-      });
-      return;
+      })
+      return
     }
     if (pesquisa) {
       setTitulo(`Resultado da pesquisa '${pesquisa}'`);
       getProductsByName(pesquisa).then((data) => {
         setLoading(false)
         setProducts(data)
-      });
-      return;
+      })
+      return
     }
 
     setTitulo("TODOS OS PRODUTOS");
     getAllProducts("asc").then((data) => {
       setLoading(false)
       setProducts(data)
-    });
-    return;
-  };
+    })
+    return
+  }
 
   useEffect(() => {
-    if (select) select.value = "asc";
+    if (select) select.value = "asc"
 
     loadProducts();
-  }, [categoria, pesquisa]);
+  }, [categoria, pesquisa])
 
   return (
     <main className="pagina-produtos" style={ centerLoader() }>
@@ -117,7 +111,7 @@ const PaginaProdutos = () => {
 
         <section className="produtos">
           <div className="ordenacao-container">
-            {renderOrdernacao() && (
+            {!pesquisa && (
               <div>
                 <label htmlFor="order">Ordenação: </label>
                 <select
@@ -141,7 +135,7 @@ const PaginaProdutos = () => {
       </div>
       }
     </main>
-  );
-};
+  )
+}
 
 export default PaginaProdutos;

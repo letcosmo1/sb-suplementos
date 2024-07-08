@@ -1,19 +1,19 @@
-import "./PaginaDetalhes.css";
-import { Link, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { TypeProduct, TypeSaleProduct } from "../utils/Types";
-import { getImage } from "../utils/ImageUrl";
-import { useEffect, useState } from "react";
+import "./PaginaDetalhes.css"
+import { Link, useParams } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons"
+import { TypeProduct, TypeSaleProduct } from "../utils/Types"
+import { getImage } from "../utils/ImageUrl"
+import { useEffect, useState } from "react"
 import {
   getProductById,
   sendProductForSale,
-} from "../api/ProductsApi";
-import { capitalizeFirstLetter, toReais } from "../utils/StringFormat";
-import ClipLoader from "react-spinners/ClipLoader";
+} from "../api/ProductsApi"
+import { capitalizeFirstLetter, toReais } from "../utils/StringFormat"
+import ClipLoader from "react-spinners/ClipLoader"
 
 const PaginaDetalhes = () => {  
-  const { id } = useParams();
+  const { id } = useParams()
 
   const [product, setProduct] = useState<TypeProduct>({
     _id: "",
@@ -26,11 +26,11 @@ const PaginaDetalhes = () => {
     weight: "",
     table: "",
     available: true,
-  });
+  })
 
-  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [selectedImage, setSelectedImage] = useState<string>("")
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
 
   const centerLoader = () => {
     if(loading) {
@@ -44,29 +44,29 @@ const PaginaDetalhes = () => {
   }
 
   const toggleImage = (imagem_url: string) => {
-    setSelectedImage(imagem_url);
-  };
+    setSelectedImage(imagem_url)
+  }
 
   const whatsappRedirect = () => {
     const sale_product: TypeSaleProduct = {
       name: product.name,
       price: product.price,
       flavor: product.flavor,
-    };
+    }
 
     sendProductForSale(sale_product).then((data) =>
       window.open(data, "_blank")
-    );
-  };
+    )
+  }
 
   useEffect(() => {
     getProductById(id)
       .then((data) => {
-        setLoading(false);
-        setProduct(data);
-        setSelectedImage(data.image);
+        setLoading(false)
+        setProduct(data)
+        setSelectedImage(data.image)
       })
-  }, []);
+  }, [])
 
   return (
     <main className="pagina-detalhes" style={ centerLoader() }>
@@ -145,7 +145,7 @@ const PaginaDetalhes = () => {
       </div>
       }
     </main>
-  );
-};
+  )
+}
 
-export default PaginaDetalhes;
+export default PaginaDetalhes

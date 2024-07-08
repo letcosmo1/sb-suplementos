@@ -8,13 +8,11 @@ import CategoriaDestaque from '../components/CategoriaDestaque'
 import { getImageUrl } from '../utils/ImageUrl'
 import { highlight_categories_placeholder } from '../utils/Placeholders'
 import { categories_slider } from '../utils/CategoriesSlider'
-import { useNavigate } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { getHighlightCategories } from '../api/ProductsApi'
 
 const PaginaInicial = () => {
-  const navigate = useNavigate();
-  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' })
 
   const banner_carousel_responsive = {
     device: {
@@ -54,7 +52,7 @@ const PaginaInicial = () => {
       .then(data => {
         setHighlightCategories(data)
       })
-  }, []);
+  }, [])
 
   return (
       <main>

@@ -1,5 +1,5 @@
 import './DestaqueCard.css'
-import { getImage } from '../utils/ImageUrl';
+import { getImage } from '../utils/ImageUrl'
 
 type PropTypes = {
     imagem: string

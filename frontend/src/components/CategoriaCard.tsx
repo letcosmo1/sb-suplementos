@@ -1,7 +1,7 @@
-import { getImage } from '../utils/ImageUrl';
-import { TypeCategorySlider } from '../utils/Types';
+import { getImage } from '../utils/ImageUrl'
+import { TypeCategorySlider } from '../utils/Types'
 import './CategoriaCard.css'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 type PropTypes = {
     category_slider: TypeCategorySlider

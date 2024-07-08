@@ -1,23 +1,23 @@
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PaginaInicial from "./pages/PaginaInicial";
-import Header from "./components/Header";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import PaginaDetalhes from "./pages/PaginaDetalhes";
-import PaginaProdutos from "./pages/PaginaProdutos";
-import PaginaLoginAdm from "./pages/PaginaLoginAdm";
-import { useEffect, useState } from "react";
-import Pagina404 from "./pages/Pagina404";
+import "./App.css"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import PaginaInicial from "./pages/PaginaInicial"
+import Header from "./components/Header"
+import Nav from "./components/Nav"
+import Footer from "./components/Footer"
+import PaginaDetalhes from "./pages/PaginaDetalhes"
+import PaginaProdutos from "./pages/PaginaProdutos"
+import PaginaLoginAdm from "./pages/PaginaLoginAdm"
+import { useEffect, useState } from "react"
+import Pagina404 from "./pages/Pagina404"
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      setIsLoggedIn(true);
+      setIsLoggedIn(true)
     }
-  }, []);
+  }, [])
 
   return (
     <BrowserRouter>
@@ -38,7 +38,7 @@ const App = () => {
       </Routes>
       <Footer />
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

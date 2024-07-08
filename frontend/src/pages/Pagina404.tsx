@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import "./Pagina404.css";
+import { useNavigate } from "react-router-dom"
+import "./Pagina404.css"
 
 const Pagina404 = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate("/"); 
+    navigate("/");
   };
   return (
     <main className="main-404-container">
@@ -18,7 +18,7 @@ const Pagina404 = () => {
         <button onClick={ handleClick }>PÁGINA INICIAL</button>
       </div>
     </main>
-  );
-};
+  )
+}
 
 export default Pagina404;
