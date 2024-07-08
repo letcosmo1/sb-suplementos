@@ -1,4 +1,4 @@
-const api_url: string = "https://main--rococo-druid-6fe908.netlify.app";
+const api_url: string = "https://main--rococo-druid-6fe908.netlify.app"
 
 export const signIn = (email: string, password: string) => {
   return fetch(`${api_url}/user/signin`, {
@@ -8,8 +8,8 @@ export const signIn = (email: string, password: string) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      let token: string = "";
-      if (data.token) token = data.token;
-      return token;
-    });
-};
+      let token: string = ""
+      if (data.token) token = data.token
+      return token
+    })
+}
