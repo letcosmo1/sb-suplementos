@@ -3,11 +3,7 @@ import './Nav.css'
 import { Link, useLocation } from 'react-router-dom'
 import Carousel from 'react-multi-carousel'
 
-type PropTypes = {
-    isLoggedIn: boolean,
-}
-
-const Nav = ({ isLoggedIn }: PropTypes) => {
+const Nav = () => {
     const location = useLocation()
     const isMobile = useMediaQuery({ query: '(max-width: 1000px)' })
     const nav_carousel_responsive = {

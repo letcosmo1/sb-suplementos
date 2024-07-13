@@ -26,7 +26,7 @@ const App = () => {
         isLoggedIn={ isLoggedIn } 
         setIsLoggedIn={ setIsLoggedIn } 
       />
-      <Nav isLoggedIn={isLoggedIn} />
+      <Nav />
       <Routes>
         <Route 
           path="/" 

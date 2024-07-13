@@ -206,7 +206,7 @@ const PaginaAdmin = () => {
 					count={ products.length }
 					rowsPerPage={ rows_per_page }
 					page={ page }
-					onPageChange={ (e, page) => handleChangePage(page) }
+					onPageChange={ (_, page) => handleChangePage(page) }
 				/>
 				</TableContainer>
         }
