@@ -45,7 +45,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }: PropTypes) => {
             <input type="text" placeholder="Pesquisar" onChange={ handlePesquisaChange }/>
             
             <Link to={`/produtos?pesquisa=${pesquisa}`}>
-              <button><FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize: 15, color: "var(--gray)"}} /></button>
+              <button><FontAwesomeIcon icon={ faMagnifyingGlass } style={{fontSize: 15, color: "var(--gray)"}} /></button>
             </Link>
         </form>
         }

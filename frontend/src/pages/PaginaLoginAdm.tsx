@@ -34,7 +34,7 @@ const PaginaLogin = ({ setIsLoggedIn }: PropTypes) => {
                     setLoading(false)
                     localStorage.setItem("token", data)
                     setIsLoggedIn(true)
-                    navigate("/produtos")
+                    navigate("/admin")
                 } else {
                     setMessage("*Login ou senha inválida.")
                 }

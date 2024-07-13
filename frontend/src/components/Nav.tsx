@@ -27,15 +27,19 @@ const Nav = ({ isLoggedIn }: PropTypes) => {
     ]
 
     const renderLinks = () => {
+        if(location.pathname === "/admin") 
+            return [<a></a>]
+
+        if(location.pathname === "/admin/") 
+            return [<a></a>]
+
         if(location.pathname === "/admin/login") 
             return [<a></a>]
 
-        if(!isLoggedIn) 
-            return links
+        if(location.pathname === "/admin/login/") 
+            return [<a></a>]
         
-        return [
-                <li style={{ justifyContent: "center" }}><Link to={"/produtos"}>Todos os produtos</Link></li>
-               ]
+        return links
     }
 
     return (

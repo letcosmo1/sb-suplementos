@@ -11,7 +11,7 @@ export const getHighlightCategories = () => {
   return fetch(`${api_url}/categories/hl`)
     .then((res) => res.json())
     .then((data: TypeHighlightCategory[]) => data)
-};
+}
 export const getHighlightProducts = (products_ids: string[]) => {
   return new Promise<TypeProduct[]>((resolve, reject) => {
     let products: TypeProduct[] = []
@@ -45,17 +45,17 @@ export const getAllProductsAdm = (token: string) => {
   })
     .then((res) => res.json())
     .then((data: TypeProduct[]) => data)
-};
+}
 export const getAllProducts = (order: string) => {
   return fetch(`${api_url}/products/${order}`)
     .then((res) => res.json())
     .then((data: TypeProduct[]) => data)
-};
+}
 export const getProductsByName = (name: string) => {
   return fetch(`${api_url}/products/${name}`)
     .then((res) => res.json())
     .then((data: TypeProduct[]) => data)
-};
+}
 export const getProductById = (id: string | undefined) => {
   return fetch(`${api_url}/product/${id}`)
     .then((res) => res.json())
@@ -66,7 +66,7 @@ export const getProductById = (id: string | undefined) => {
 
       return product
     })
-};
+}
 export const getProductsByCategory = (order: string, category: string) => {
   return fetch(`${api_url}/products/category/${order}/${category}`)
     .then((res) => res.json())
@@ -89,14 +89,13 @@ export const sendProductForSale = (product: TypeSaleProduct) => {
       let url = ""
       if (data.url) url = data.url
       return url
-    });
-};
+    })
+}
 export const updateProductAvailableAdm = (
   token: string,
   _id: string,
   available: boolean
 ) => {
-  console.log(_id)
   return fetch(`${api_url}/admin/patch/${_id}`, {
     method: "PATCH",
     headers: {
@@ -107,5 +106,46 @@ export const updateProductAvailableAdm = (
     body: JSON.stringify({ available: available }),
   })
     .then((res) => res.json())
-    .then(console.log)
+}
+export const getProductsByCategoryAdm = (
+  token: string,
+  category: string
+) => {
+  return fetch(`${api_url}/admin/products/category/${category}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    }
+  })
+    .then((res) => res.json())
+    .then((data: any) => {
+      let products: TypeProduct[] = []
+
+      if (!data.message) products = data
+
+      return products
+    })
+}
+export const getProductsByNameAdm = (
+  token: string,
+  name: string
+) => {
+  return fetch(`${api_url}/admin/products/${name}/asc`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    }
+  })
+    .then((res) => res.json())
+    .then((data: any) => {
+      let products: TypeProduct[] = []
+
+      if (!data.message) products = data
+
+      return products
+    })
 }

@@ -9,6 +9,7 @@ import PaginaProdutos from "./pages/PaginaProdutos"
 import PaginaLoginAdm from "./pages/PaginaLoginAdm"
 import { useEffect, useState } from "react"
 import Pagina404 from "./pages/Pagina404"
+import PaginaAdmin from "./pages/PaginaAdmin"
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
@@ -22,19 +23,36 @@ const App = () => {
   return (
     <BrowserRouter>
       <Header
-        isLoggedIn={isLoggedIn} 
+        isLoggedIn={ isLoggedIn } 
         setIsLoggedIn={ setIsLoggedIn } 
       />
       <Nav isLoggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<PaginaInicial />} />
+        <Route 
+          path="/" 
+          element={<PaginaInicial />}
+        />
         <Route
           path="/admin/login"
-          element={<PaginaLoginAdm setIsLoggedIn={ setIsLoggedIn } />}
+          element={<PaginaLoginAdm 
+          setIsLoggedIn={ setIsLoggedIn } />}
         />
-        <Route path="/produtos" element={<PaginaProdutos />}/>
-        <Route path="/produto/:id" element={<PaginaDetalhes />}/>
-        <Route path="*" element={<Pagina404 />} />
+        <Route 
+          path="/admin/" 
+          element={<PaginaAdmin />}
+        />
+        <Route 
+          path="/produtos" 
+          element={<PaginaProdutos />}
+        />
+        <Route 
+          path="/produto/:id" 
+          element={<PaginaDetalhes />}
+        />
+        <Route 
+          path="*" 
+          element={<Pagina404 />} 
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

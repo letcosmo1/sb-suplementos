@@ -82,8 +82,8 @@ const PaginaProdutos = () => {
 
   useEffect(() => {
     if (select) select.value = "asc"
-
-    loadProducts();
+    
+    loadProducts()
   }, [categoria, pesquisa])
 
   return (
@@ -117,7 +117,7 @@ const PaginaProdutos = () => {
                 <select
                   id="select-ordenacao"
                   name="order"
-                  onChange={handleOrdenacaoChange}
+                  onChange={ handleOrdenacaoChange }
                 >
                   <option value="asc">A - Z</option>
                   <option value="desc">Z - A</option>

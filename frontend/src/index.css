@@ -31,7 +31,7 @@
     --green: #25844B;
     --light-red: #df4c38;
     --red: #e03100;
-    --view-height: calc(100vh - 110px);
+    --view-height: calc(100vh - 120px);
     --view-height-mobile: calc(100vh - 177px);
 }
 input:focus {
