@@ -12,6 +12,7 @@ import { Checkbox, styled, TablePagination } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleMinus, faCirclePlus, faMagnifyingGlass, faPen } from '@fortawesome/free-solid-svg-icons'
 import ClipLoader from 'react-spinners/ClipLoader'
+import { toReais } from '../utils/StringFormat'
 
 const PaginaAdmin = () => {
     const token = localStorage.getItem("token")
@@ -189,7 +190,7 @@ const PaginaAdmin = () => {
 								<TableCell><Checkbox onClick={ (e) => handleCheckboxClick(e, product._id) } checked={ product.available }/></TableCell>
 								<TableCell>{ product.name }</TableCell>
 								<TableCell>{ product.flavor }</TableCell>
-								<TableCell>{ product.price }</TableCell>
+								<TableCell>{ toReais(product.price) }</TableCell>
 								<TableCell>{ product.category }</TableCell>
 								<TableCell>{ product.image }</TableCell>
 								<TableCell>{ product.table }</TableCell>
