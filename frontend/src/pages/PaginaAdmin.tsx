@@ -8,7 +8,7 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import { Checkbox, styled, TablePagination } from '@mui/material'
+import { Checkbox, styled, TablePagination, TableSortLabel } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleMinus, faCirclePlus, faMagnifyingGlass, faPen } from '@fortawesome/free-solid-svg-icons'
 import ClipLoader from 'react-spinners/ClipLoader'
@@ -23,9 +23,11 @@ const PaginaAdmin = () => {
       document.querySelector("#pesquisa-admin")
 
     const [products, setProducts] = useState<TypeProduct[]>([])
-		const [page, setPage] = useState(0)
+		const [page, setPage] = useState<number>(0)
 		const [pesquisa, setPesquisa] = useState<string>("")
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState<boolean>(true)
+    const [orderByColumn, setOrderByColumn] = useState<string>("")
+    const [order, setOrder] = useState<"asc" | "desc">("asc")
 		
 		const rows_per_page = 7
 
@@ -68,14 +70,24 @@ const PaginaAdmin = () => {
 		const handleCategoriaChange = (e: BaseSyntheticEvent) => {
 			const category: string = e.target.value
 
-			if(token && category) {
+			if(token) {
         setLoading(true)
+        setOrderByColumn("")
         setPage(0)
-				getProductsByCategoryAdm(token, category)
+
+        if(category === "Todos") {
+          getAllProductsAdm(token)
 					.then((data) => {
             setLoading(false)
             setProducts(data)
           })
+        } else {
+          getProductsByCategoryAdm(token, category)
+            .then((data) => {
+              setLoading(false)
+              setProducts(data)
+            })
+        }
       }
 		}
 
@@ -93,6 +105,7 @@ const PaginaAdmin = () => {
           input.value = ""
 
         setLoading(true)
+        setOrderByColumn("")
         setPage(0)
 				getProductsByNameAdm(token, pesquisa)
 					.then((data) => {
@@ -101,6 +114,34 @@ const PaginaAdmin = () => {
           })
       }
 		}
+
+    const handleSortRequest = (column: "name" | "price") => {
+      if(!(column === orderByColumn)) {
+        setOrder("asc")
+        setOrderByColumn(column)
+        sortProducts("asc", column)
+        return
+      }
+
+      if(order === "asc") {
+        setOrder("desc")
+        sortProducts("desc", column)
+        return
+      } 
+      
+      setOrder("asc")
+      sortProducts("asc", column)
+      return
+    }
+
+    const sortProducts = (order: string, column: "name" | "price") => {
+      setProducts(products.sort((a, b) => {
+        if (order === "asc") {
+          return a[column] > b[column] ? 1 : -1
+        }
+        return a[column] < b[column] ? 1 : -1
+      }))
+    }
     
     useEffect(() => {
 			if(token) {
@@ -131,7 +172,7 @@ const PaginaAdmin = () => {
 							name="categoria"
 							onChange={ handleCategoriaChange }
 						>
-							<option value="">Selecionar</option>
+							<option value="Todos">Todos</option>
 							<option value="Creatina">Creatina</option>
 							<option value="Whey">Whey</option>
 							<option value="Pré-treino">Pré-treino</option>
@@ -164,9 +205,25 @@ const PaginaAdmin = () => {
 					<TableHead>
 						<TableRow>
 							<TableCell>Disponível</TableCell>
-							<TableCell>Nome</TableCell>
+							<TableCell>
+                <TableSortLabel
+                  active={ orderByColumn === "name" }
+                  direction={ orderByColumn === "name" ? order : "asc"  }
+                  onClick={ () => handleSortRequest("name") }
+                >
+                  Nome
+                </TableSortLabel>
+              </TableCell>
 							<TableCell>Sabor</TableCell>
-							<TableCell>Preço</TableCell>
+							<TableCell>
+                <TableSortLabel
+                  active={ orderByColumn === "price" }
+                  direction={ orderByColumn === "price" ? order : "asc" }
+                  onClick={ () => handleSortRequest("price") }
+                >
+                  Preço
+                </TableSortLabel>
+              </TableCell>
 							<TableCell>Categoria</TableCell>
 							<TableCell>Imagem</TableCell>
 							<TableCell>Tabela</TableCell>
