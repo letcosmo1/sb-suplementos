@@ -1,0 +1,20 @@
+.admin-pesquisa-form input {
+    width: calc(450px - 16px);
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--light-gray);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: var(--white);
+    font-size: 14px;
+}
+.admin-pesquisa-form button {
+    width: 40px;
+    height: 42px;
+    border: 1px solid var(--light-gray);
+    border-left: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: var(--white);
+    cursor: pointer;
+}

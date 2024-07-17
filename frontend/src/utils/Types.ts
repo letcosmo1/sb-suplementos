@@ -25,3 +25,8 @@ export type TypeSaleProduct = {
     price: number,
     flavor?: string | any
 }
+
+export type TypeTableHeadCell = {
+    label: string,
+    property?: string
+}

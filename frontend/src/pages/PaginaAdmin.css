@@ -21,38 +21,4 @@
     color: var(--blue);
     font-size: 44px;
 }
-.categoria-select-container {
-    margin: 32px 0;
-}
-.categoria-select-container label {
-    margin-right: 8px;
-    color: var(--gray);
-}
-.categoria-select-container select {
-    cursor: pointer;
-    color: var(--gray);
-    border: none;
-    border-bottom: 1px solid var(--light-gray);
-    border-radius: 2px;
-    padding: 8px 8px;
-}
-.admin-pesquisa-form input {
-    width: calc(450px - 16px);
-    height: 40px;
-    padding: 0 16px;
-    border: 1px solid var(--light-gray);
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    background-color: var(--white);
-    font-size: 14px;
-}
-.admin-pesquisa-form button {
-    width: 40px;
-    height: 42px;
-    border: 1px solid var(--light-gray);
-    border-left: none;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    background-color: var(--white);
-    cursor: pointer;
-}
+

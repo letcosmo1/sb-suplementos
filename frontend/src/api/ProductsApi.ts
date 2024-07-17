@@ -44,17 +44,35 @@ export const getAllProductsAdm = (token: string) => {
     headers: { authorization: `Bearer ${token}` },
   })
     .then((res) => res.json())
-    .then((data: TypeProduct[]) => data)
+    .then((data: any) => {
+      let products: TypeProduct[] = []
+
+      if (!data.message) products = data
+
+      return products
+    })
 }
 export const getAllProducts = (order: string) => {
   return fetch(`${api_url}/products/${order}`)
     .then((res) => res.json())
-    .then((data: TypeProduct[]) => data)
+    .then((data: any) => {
+      let products: TypeProduct[] = []
+
+      if (!data.message) products = data
+
+      return products
+    })
 }
 export const getProductsByName = (name: string) => {
   return fetch(`${api_url}/products/${name}`)
     .then((res) => res.json())
-    .then((data: TypeProduct[]) => data)
+    .then((data: any) => {
+      let products: TypeProduct[] = []
+
+      if (!data.message) products = data
+
+      return products
+    })
 }
 export const getProductById = (id: string | undefined) => {
   return fetch(`${api_url}/product/${id}`)
